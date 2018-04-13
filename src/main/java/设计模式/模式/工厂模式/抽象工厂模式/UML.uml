@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_keDJUBkMEeiQLoLlmAXTwg">
+  <name xsi:nil="true"/>
+  <elementImport xmi:id="_k8Z5QBkMEeiQLoLlmAXTwg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_kxJrgBkMEeiQLoLlmAXTwg" name="设计模式">
+    <packagedElement xmi:type="uml:Package" xmi:id="_kxtsMBkMEeiQLoLlmAXTwg" name="工厂模式">
+      <packagedElement xmi:type="uml:Package" xmi:id="_kxuTQBkMEeiQLoLlmAXTwg" name="抽象工厂模式">
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyKYIBkMEeiQLoLlmAXTwg" name="FactoryBMW523" clientDependency="_k11-QBkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k11-QBkMEeiQLoLlmAXTwg" name="AbstractFactory" supplier="_kyw1EBkMEeiQLoLlmAXTwg" client="_kyKYIBkMEeiQLoLlmAXTwg" contract="_kyw1EBkMEeiQLoLlmAXTwg"/>
+          <ownedOperation xmi:id="_k2HrEBkMEeiQLoLlmAXTwg" name="createEngine" visibility="public">
+            <ownedParameter xmi:id="_k2HrERkMEeiQLoLlmAXTwg" name="return" type="_ky0fcBkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_k2I5MBkMEeiQLoLlmAXTwg" name="createAircondition" visibility="public">
+            <ownedParameter xmi:id="_k2I5MRkMEeiQLoLlmAXTwg" name="return" type="_kyu_4BkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_yPW9EBkMEeiQLoLlmAXTwg" name="Operation1"/>
+          <ownedOperation xmi:id="_y1vnoBkMEeiQLoLlmAXTwg" name="Operation2"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_kyu_4BkMEeiQLoLlmAXTwg" name="Aircondition"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyvm8BkMEeiQLoLlmAXTwg" name="FactoryBMW320" clientDependency="_k2KHUBkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k2KHUBkMEeiQLoLlmAXTwg" name="AbstractFactory" supplier="_kyw1EBkMEeiQLoLlmAXTwg" client="_kyvm8BkMEeiQLoLlmAXTwg" contract="_kyw1EBkMEeiQLoLlmAXTwg"/>
+          <ownedOperation xmi:id="_k2LVcBkMEeiQLoLlmAXTwg" name="createEngine" visibility="public">
+            <ownedParameter xmi:id="_k2LVcRkMEeiQLoLlmAXTwg" name="return" type="_ky0fcBkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_k2L8gBkMEeiQLoLlmAXTwg" name="createAircondition" visibility="public">
+            <ownedParameter xmi:id="_k2L8gRkMEeiQLoLlmAXTwg" name="return" type="_kyu_4BkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_kyw1EBkMEeiQLoLlmAXTwg" name="AbstractFactory">
+          <ownedOperation xmi:id="_k2MjkBkMEeiQLoLlmAXTwg" name="createEngine" visibility="public">
+            <ownedParameter xmi:id="_k2MjkRkMEeiQLoLlmAXTwg" name="return" type="_ky0fcBkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_k2MjkhkMEeiQLoLlmAXTwg" name="createAircondition" visibility="public">
+            <ownedParameter xmi:id="_k2MjkxkMEeiQLoLlmAXTwg" name="return" type="_kyu_4BkMEeiQLoLlmAXTwg" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyxcIBkMEeiQLoLlmAXTwg" name="EngineB" clientDependency="_k2MjlBkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k2MjlBkMEeiQLoLlmAXTwg" name="Engine" supplier="_ky0fcBkMEeiQLoLlmAXTwg" client="_kyxcIBkMEeiQLoLlmAXTwg" contract="_ky0fcBkMEeiQLoLlmAXTwg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyyDMBkMEeiQLoLlmAXTwg" name="AirconditionB" clientDependency="_k2NKoBkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k2NKoBkMEeiQLoLlmAXTwg" name="Aircondition" supplier="_kyu_4BkMEeiQLoLlmAXTwg" client="_kyyDMBkMEeiQLoLlmAXTwg" contract="_kyu_4BkMEeiQLoLlmAXTwg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyyqQBkMEeiQLoLlmAXTwg" name="AirconditionA" clientDependency="_k2NKoRkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k2NKoRkMEeiQLoLlmAXTwg" name="Aircondition" supplier="_kyu_4BkMEeiQLoLlmAXTwg" client="_kyyqQBkMEeiQLoLlmAXTwg" contract="_kyu_4BkMEeiQLoLlmAXTwg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_kyz4YBkMEeiQLoLlmAXTwg" name="Customer">
+          <ownedOperation xmi:id="_k8c8kBkMEeiQLoLlmAXTwg" name="main" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_k8c8kRkMEeiQLoLlmAXTwg" name="args">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_k8c8khkMEeiQLoLlmAXTwg" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_k8c8kxkMEeiQLoLlmAXTwg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_0wvUsBkMEeiQLoLlmAXTwg" name="Operation1"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_ky0fcBkMEeiQLoLlmAXTwg" name="Engine"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ky1tkBkMEeiQLoLlmAXTwg" name="EngineA" clientDependency="_k8eKsBkMEeiQLoLlmAXTwg">
+          <interfaceRealization xmi:id="_k8eKsBkMEeiQLoLlmAXTwg" name="Engine" supplier="_ky0fcBkMEeiQLoLlmAXTwg" client="_ky1tkBkMEeiQLoLlmAXTwg" contract="_ky0fcBkMEeiQLoLlmAXTwg"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
