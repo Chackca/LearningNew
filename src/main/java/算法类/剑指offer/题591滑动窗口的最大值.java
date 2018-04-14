@@ -10,7 +10,7 @@ public class 题591滑动窗口的最大值 {
             return new int[0];
         //结果集=8-3+1=6个元素
         int[] result = new int[data.length-size+1];
-        Deque<Integer> deque = new ArrayDeque<>();
+        Deque<Integer> deque = new ArrayDeque();
 
         for(int i=0;i<size-1;i++){//循环三次
         	//第一次队列为空，不进入，第二次进入了

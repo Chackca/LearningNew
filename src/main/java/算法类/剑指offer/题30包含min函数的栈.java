@@ -5,7 +5,7 @@ import java.util.Stack;
 public class 题30包含min函数的栈 {
 	
 	public static void main(String[] args){
-        StackWithMin<Integer> stack = new StackWithMin<>();
+        StackWithMin<Integer> stack = new StackWithMin();
         stack.push(3);
         stack.push(4);
         stack.push(2);
@@ -24,8 +24,8 @@ public class 题30包含min函数的栈 {
 	
 	//静态内部类
 	static class StackWithMin<T extends Comparable>{	
-		Stack<T> stackData = new Stack<>();
-		Stack<T> stackMin = new Stack<>();
+		Stack<T> stackData = new Stack();
+		Stack<T> stackMin = new Stack();
 		public void push(T data) {
 			stackData.push(data);
 			if(stackMin.isEmpty()){

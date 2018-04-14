@@ -24,7 +24,7 @@ public class 桶排序  implements Sort {
 	public static void bucketSort(int[] arr){
 
 		//新建一个大小为原数组长度的数组
-		ArrayList<ArrayList<Integer>> bucketArr = new ArrayList<>(arr.length);
+		ArrayList<ArrayList<Integer>> bucketArr = new ArrayList(arr.length);
 
 	    int max = Integer.MIN_VALUE;
 	    int min = Integer.MAX_VALUE;

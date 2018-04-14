@@ -19,7 +19,7 @@ public class 题382字符串的组合 {
         if (strs == null || strs.length == 0)
             return null;
         Arrays.sort(strs);
-        List<char[]> ret = new LinkedList<>();
+        List<char[]> ret = new LinkedList();
         combinationCore(strs,ret,new StringBuilder(),0);
         return ret;
     }

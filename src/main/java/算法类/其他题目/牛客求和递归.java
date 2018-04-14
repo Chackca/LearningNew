@@ -23,8 +23,8 @@ import java.util.Scanner;
 
 
 public class 牛客求和递归 {
-    static ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-    static ArrayList<Integer> list = new ArrayList<>();
+    static ArrayList<ArrayList<Integer>> res = new ArrayList();
+    static ArrayList<Integer> list = new ArrayList();
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n, m;
@@ -46,7 +46,7 @@ public class 牛客求和递归 {
     public static void dfs(int index, int count, int n) {
         //递归退出的条件
         if(count == 0) { //执行到这里说明成功找到
-            res.add(new ArrayList<>(list));
+            res.add(new ArrayList(list));
         }
         else {
             for(int i = index; i <= count && i <= n; i++) {

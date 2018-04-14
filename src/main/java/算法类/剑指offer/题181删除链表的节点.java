@@ -72,9 +72,9 @@ public class 题181删除链表的节点 {
 		
 	}
 	public static void main(String[] args){
-        ListNode<Integer> head = new ListNode<>(1);
-        ListNode<Integer> node2 = new ListNode<>(2);
-        ListNode<Integer> node3 = new ListNode<>(3);
+        ListNode<Integer> head = new ListNode(1);
+        ListNode<Integer> node2 = new ListNode(2);
+        ListNode<Integer> node3 = new ListNode(3);
         head.next = node2;
         node2.next = node3;
         System.out.println(head);

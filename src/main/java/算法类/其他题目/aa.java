@@ -46,7 +46,7 @@ public class aa {
     public static int fun2 (int[] a) {
         a = new int[] {1,1,2,2,2,2,2,3,3,3,3,4};
         int between = 1;
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet();
         //将不同的数据加入到set集合
         for (int i : a) {
             set.add(i);

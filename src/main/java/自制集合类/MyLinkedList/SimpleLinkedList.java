@@ -16,7 +16,7 @@ public class SimpleLinkedList<E> {
 
     private void addAtLast(E element) {
         Node<E> l = last;
-        Node<E> node = new Node<>(element, null, l);
+        Node<E> node = new Node(element, null, l);
         last = node;
         if (l == null) {
             first = node;
@@ -38,7 +38,7 @@ public class SimpleLinkedList<E> {
 
     private void addBeforeNode(E element, Node<E> specifiedNode) {
         Node<E> preNode = specifiedNode.prev;
-        Node<E> newNode = new Node<>(element, specifiedNode, preNode);
+        Node<E> newNode = new Node(element, specifiedNode, preNode);
         if (preNode == null) {
             first = newNode;
         } else {

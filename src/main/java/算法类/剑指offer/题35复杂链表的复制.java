@@ -54,7 +54,7 @@ public class 题35复杂链表的复制 {
     public static ComplexListNode clone2(ComplexListNode head) {
         if(head==null)
             return null;
-        HashMap<ComplexListNode,ComplexListNode> oldToNew = new HashMap<>();
+        HashMap<ComplexListNode,ComplexListNode> oldToNew = new HashMap();
         ComplexListNode newHead = new ComplexListNode(head.val);
         oldToNew.put(head,newHead);
         ComplexListNode cur = head.next;

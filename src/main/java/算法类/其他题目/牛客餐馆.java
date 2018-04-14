@@ -114,7 +114,7 @@ public class 牛客餐馆 {
                                 disk[i] = sc.nextInt();
                         }
                         Arrays.sort(disk); // 桌子容纳量从小到大排序
-                        PriorityQueue<Customer> queue = new PriorityQueue<>(); // 将客人按消费额降序加入优先级队列
+                        PriorityQueue<Customer> queue = new PriorityQueue(); // 将客人按消费额降序加入优先级队列
                         for (int i = 0; i < m; i ++) {
                                 int b = sc.nextInt();
                                 int c = sc.nextInt();

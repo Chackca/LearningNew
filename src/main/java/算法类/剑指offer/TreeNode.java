@@ -17,7 +17,7 @@ public class TreeNode<T> {
     @Override
     public String toString() {
         StringBuilder SB = new StringBuilder("层序遍历：[");
-        Queue<TreeNode<T>> queue = new LinkedList<>();
+        Queue<TreeNode<T>> queue = new LinkedList();
         queue.offer(this);
         TreeNode<T> temp;
         while(!queue.isEmpty()){
@@ -117,7 +117,7 @@ public class TreeNode<T> {
     	 if(node==null)
              return;
     	//stack栈顶元素永远为cur的父节点
-        Stack<TreeNode<T>> stack = new Stack<>();
+        Stack<TreeNode<T>> stack = new Stack();
         TreeNode<T> cur = node;
         while(cur!=null || !stack.isEmpty()){
             if(cur!=null){
@@ -135,7 +135,7 @@ public class TreeNode<T> {
     //中序遍历非递归版
     public void inorderIteratively(TreeNode<T> node, StringBuilder SB){
         //stack栈顶元素永远为cur的父节点
-        Stack<TreeNode<T>> stack = new Stack<>();
+        Stack<TreeNode<T>> stack = new Stack();
         TreeNode<T> cur = node;
         while(cur!=null || !stack.isEmpty()){
             if(cur!=null){
@@ -153,7 +153,7 @@ public class TreeNode<T> {
     public void postorderIteratively(TreeNode<T> node, StringBuilder SB){
         //stack栈顶元素永远为cur的父节点
         //prevVisted用于区分是从左子树还是右子树返回的
-        Stack<TreeNode<T>> stack = new Stack<>();
+        Stack<TreeNode<T>> stack = new Stack();
         TreeNode<T> cur = node;
         TreeNode<T> prevVisted = null;
         while(cur!=null || !stack.isEmpty()){

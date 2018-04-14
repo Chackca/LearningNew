@@ -1,6 +1,6 @@
 package 设计模式.大话设计模式.composite;
 
-import 大话设计模式.util.StringUtil;
+import 设计模式.大话设计模式.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;

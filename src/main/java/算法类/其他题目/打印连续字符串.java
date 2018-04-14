@@ -23,7 +23,7 @@ public class 打印连续字符串 {
     }
 
     public static TreeMap<Integer, String> getResult(String str, int n) {
-        TreeMap<Integer, String> map = new TreeMap<>();
+        TreeMap<Integer, String> map = new TreeMap();
         int sum;
         for (int i = 0; i <= str.length()-n; i+=sum) {
             sum=0;

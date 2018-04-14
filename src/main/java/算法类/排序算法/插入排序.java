@@ -1,6 +1,5 @@
 package 算法类.排序算法;
 
-import org.junit.Test;
 
 public class 插入排序 implements Sort {
 

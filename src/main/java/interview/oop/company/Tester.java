@@ -17,7 +17,7 @@ public class Tester {
         + employee2.equals(employee3));
     System.out.println();
 
-    LinkedList<Employee> employees = new LinkedList<>();
+    LinkedList<Employee> employees = new LinkedList();
     employees.add(employee1);
     employees.add(employee2);
     employees.add(employee3);

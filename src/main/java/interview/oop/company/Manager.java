@@ -11,7 +11,7 @@ public class Manager extends Employee {
       List<Employee> reporters) {
     super(name, salary);
     this.reporters = Collections.unmodifiableList(
-        new ArrayList<>(reporters));
+        new ArrayList(reporters));
   }
 
   @Override

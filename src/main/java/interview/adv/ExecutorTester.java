@@ -15,7 +15,7 @@ public class ExecutorTester {
       throws InterruptedException, ExecutionException {
     ExecutorService executor = Executors.newFixedThreadPool(3);
 
-    List<Future<?>> taskResults = new LinkedList<>();
+    List<Future<?>> taskResults = new LinkedList();
     for (int i = 0; i < 10; i++) {
       taskResults.add(executor.submit(new CodingTask(i)));
     }

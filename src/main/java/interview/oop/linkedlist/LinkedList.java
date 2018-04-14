@@ -20,7 +20,7 @@ public class LinkedList<T> implements Iterable<T> {
   }
 
   public void add(T value) {
-    Node<T> node = new Node<>(value);
+    Node<T> node = new Node(value);
     if (tail == null) {
       head = node;
     } else {

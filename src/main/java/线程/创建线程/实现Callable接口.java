@@ -29,7 +29,7 @@ public class 实现Callable接口 implements Callable<String>{
 	
 	public static void main(String[] args) {  
 		实现Callable接口 test=new 实现Callable接口();  
-        FutureTask<String> ft=new FutureTask<>(test);  
+        FutureTask<String> ft=new FutureTask(test);
           
         for (int i = 0; i < 100; i++) {  
             System.out.println(Thread.currentThread().getName()+" i的值为="+i);  

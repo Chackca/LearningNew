@@ -12,7 +12,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <version>4.9</version>
+            <!--<scope>test</scope>此代码不注释会导致src项目中的@Test报错-->
         </dependency>
 
         <!-- 添加Spring依赖的jar包-->
@@ -117,6 +118,12 @@
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.6</version>
         </dependency>
 
     </dependencies>

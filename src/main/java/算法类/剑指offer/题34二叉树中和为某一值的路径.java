@@ -26,7 +26,7 @@ public class 题34二叉树中和为某一值的路径 {
 			}
 		}
 		int curentSum = 0;
-		Stack<Integer> stack = new Stack<>();
+		Stack<Integer> stack = new Stack();
 		findPath(root,exceptedSum,curentSum,stack);
 	}
 	

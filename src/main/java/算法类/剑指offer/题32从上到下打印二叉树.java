@@ -10,7 +10,7 @@ public class 题32从上到下打印二叉树 {
 		if(root == null)
 			return;
 		//StringBuilder SB = new StringBuilder("[");
-		Queue<TreeNode<Integer>> queue = new LinkedList<>();
+		Queue<TreeNode<Integer>> queue = new LinkedList();
 		queue.offer(root);//将当前的树（根节点）放入队列第一位
 		TreeNode<Integer> temp = null;		
 		while(!queue.isEmpty()){
@@ -35,7 +35,7 @@ public class 题32从上到下打印二叉树 {
 		if(root == null)
 			return;
 		StringBuilder SB = new StringBuilder("[");
-		Queue<TreeNode<Integer>> queue = new LinkedList<>();
+		Queue<TreeNode<Integer>> queue = new LinkedList();
 		queue.offer(root);//将当前的树（根节点）放入队列第一位
 		TreeNode<Integer> temp = null;		
 		while(!queue.isEmpty()){
@@ -60,9 +60,9 @@ public class 题32从上到下打印二叉树 {
 	private static void printTreeInZhi(TreeNode<Integer> root) {
 		if(root == null)return;
 		//用于保存  左右  子节点
-		Stack<TreeNode<Integer>> stack1 = new Stack<>();
+		Stack<TreeNode<Integer>> stack1 = new Stack();
 		//用户保存  右左  子节点
-		Stack<TreeNode<Integer>> stack2 = new Stack<>();
+		Stack<TreeNode<Integer>> stack2 = new Stack();
 		
 		TreeNode<Integer> temp = null ;
 		stack2.push(root);

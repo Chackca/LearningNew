@@ -20,7 +20,7 @@ public class LinkedListCreator {
       return null;
     }
 
-    Node<T> firstNode = new Node<>(data.get(0));
+    Node<T> firstNode = new Node(data.get(0));
     firstNode.setNext(
         createLinkedList(data.subList(1, data.size())));
     return firstNode;
@@ -30,7 +30,7 @@ public class LinkedListCreator {
     Node<Integer> prev = null;
     Node<Integer> head = null;
     for (int i = 1; i <= size; i++) {
-      Node<Integer> node = new Node<>(i);
+      Node<Integer> node = new Node(i);
       if (prev != null) {
         prev.setNext(node);
       } else {
@@ -45,7 +45,7 @@ public class LinkedListCreator {
     LinkedListCreator creator = new LinkedListCreator();
 
     Node.printLinkedList(
-        creator.createLinkedList(new ArrayList<>()));
+        creator.createLinkedList(new ArrayList()));
     Node.printLinkedList(
         creator.createLinkedList(Arrays.asList(1)));
     Node.printLinkedList(

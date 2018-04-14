@@ -10,7 +10,7 @@ public class Tester {
     Employee employee2 = new Employee("Mary", 20000,
         new Engineer());
 
-    LinkedList<Employee> employees = new LinkedList<>();
+    LinkedList<Employee> employees = new LinkedList();
     employees.add(employee1);
     employees.add(employee2);
 

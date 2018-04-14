@@ -39,19 +39,19 @@ public class 题26树的子结构 {
 
 
 	public static void main(String[] args) {
-		TreeNode<Integer> root1 = new TreeNode<>(8);
-        root1.left = new TreeNode<>(8);
-        root1.right = new TreeNode<>(7);
-        root1.left.left = new TreeNode<>(9);
-        root1.left.right = new TreeNode<>(2);
-        root1.left.right.left = new TreeNode<>(4);
-        root1.left.right.right = new TreeNode<>(7);
-        TreeNode<Integer> root2 = new TreeNode<>(8);
-        root2.left = new TreeNode<>(9);
-        root2.right = new TreeNode<>(2);
-        TreeNode<Integer> root3 = new TreeNode<>(2);
-        root3.left = new TreeNode<>(4);
-        root3.right = new TreeNode<>(3);
+		TreeNode<Integer> root1 = new TreeNode(8);
+        root1.left = new TreeNode(8);
+        root1.right = new TreeNode(7);
+        root1.left.left = new TreeNode(9);
+        root1.left.right = new TreeNode(2);
+        root1.left.right.left = new TreeNode(4);
+        root1.left.right.right = new TreeNode(7);
+        TreeNode<Integer> root2 = new TreeNode(8);
+        root2.left = new TreeNode(9);
+        root2.right = new TreeNode(2);
+        TreeNode<Integer> root3 = new TreeNode(2);
+        root3.left = new TreeNode(4);
+        root3.right = new TreeNode(3);
         System.out.println(hasSubtree(root1,root2));
         System.out.println(hasSubtree(root1,root3));
 	}

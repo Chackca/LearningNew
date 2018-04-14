@@ -46,7 +46,7 @@ public class 题381字符串的排列 {
 			list.add(Arrays.copyOf(strs, strs.length));
 			return;
 		}
-        Set<Character> set = new HashSet<>();
+        Set<Character> set = new HashSet();
         for (int i = index; i < strs.length; i++) {
             if (set.add(strs[i])) {
                 swap(strs, index, i);

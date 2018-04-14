@@ -25,7 +25,7 @@ public class 题22链表中倒数第k个节点 {
 	
 	
 	public static void main(String[] args) {
-		ListNode<Integer> head = new ListNode<>(1);	
+		ListNode<Integer> head = new ListNode(1);
 		head.next=new ListNode<Integer>(2);
 		head.next.next=new ListNode<Integer>(3);
 		head.next.next.next=new ListNode<Integer>(4);

@@ -36,8 +36,8 @@ public class 题28对称的二叉树 {
         if(root.left==null || root.right==null)
             return false;
 
-        Queue<TreeNode<Integer>> queueLeft = new LinkedList<>();
-        Queue<TreeNode<Integer>> queueRight = new LinkedList<>();
+        Queue<TreeNode<Integer>> queueLeft = new LinkedList();
+        Queue<TreeNode<Integer>> queueRight = new LinkedList();
         queueLeft.offer(root.left);
         queueRight.offer(root.right);
         TreeNode<Integer> tempLeft,tempRight;
@@ -66,13 +66,13 @@ public class 题28对称的二叉树 {
 	
 	
 	public static void main(String[] args) {
-		TreeNode<Integer> root = new TreeNode<>(8);
-        root.left = new TreeNode<>(6);
-        root.right = new TreeNode<>(6);
-        root.left.left = new TreeNode<>(5);
-        root.left.right = new TreeNode<>(7);
-        root.right.left = new TreeNode<>(7);
-        root.right.right = new TreeNode<>(5);
+		TreeNode<Integer> root = new TreeNode(8);
+        root.left = new TreeNode(6);
+        root.right = new TreeNode(6);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(7);
+        root.right.left = new TreeNode(7);
+        root.right.right = new TreeNode(5);
         System.out.println(isSymmetrical(root));
         System.out.println(isSymmetrical2(root));
 	}

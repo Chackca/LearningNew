@@ -9,7 +9,7 @@ public class Manager implements Role {
 
   public Manager(List<Employee> reporters) {
     this.reporters = Collections.unmodifiableList(
-        new ArrayList<>(reporters));
+        new ArrayList(reporters));
   }
 
   @Override

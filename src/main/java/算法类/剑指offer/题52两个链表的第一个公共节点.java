@@ -60,15 +60,15 @@ public class 题52两个链表的第一个公共节点 {
 	public static void main(String[] args){
         // 1->2->3->6->7
         //    4->5↗
-        ListNode<Integer> node1 = new ListNode<>(1);
-        ListNode<Integer> node2 = new ListNode<>(2);
-        ListNode<Integer> node3 = new ListNode<>(3);
+        ListNode<Integer> node1 = new ListNode(1);
+        ListNode<Integer> node2 = new ListNode(2);
+        ListNode<Integer> node3 = new ListNode(3);
         
         
-        ListNode<Integer> node4 = new ListNode<>(4);
-        ListNode<Integer> node5 = new ListNode<>(5);
-        ListNode<Integer> node6 = new ListNode<>(6);
-        ListNode<Integer> node7 = new ListNode<>(7);
+        ListNode<Integer> node4 = new ListNode(4);
+        ListNode<Integer> node5 = new ListNode(5);
+        ListNode<Integer> node6 = new ListNode(6);
+        ListNode<Integer> node7 = new ListNode(7);
         node1.next = node2;
         node2.next = node3;
         node3.next = node6;

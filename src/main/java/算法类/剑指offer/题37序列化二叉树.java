@@ -42,7 +42,7 @@ private static String serialize(TreeNode<Integer> root) {
 		SB.deleteCharAt(0);//删除逗号
 		if(num.equals("$"))
 	         return null;
-		TreeNode<Integer> node = new TreeNode<>(Integer.parseInt(num));
+		TreeNode<Integer> node = new TreeNode(Integer.parseInt(num));
         node.left = deserializeCore(SB);
         node.right = deserializeCore(SB);
         return node;

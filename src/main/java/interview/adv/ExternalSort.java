@@ -27,12 +27,12 @@ public class ExternalSort {
 
     public MergeResultIterator(List<Iterable<T>> sortedData) {
       // Collect minimum data in each sortedData.
-      queue = new PriorityQueue<>();
+      queue = new PriorityQueue();
       for (Iterable<T> data : sortedData) {
         Iterator<T> iterator = data.iterator();
         if (iterator.hasNext()) {
           queue.add(
-              new ResultEntry<>(iterator.next(), iterator));
+              new ResultEntry(iterator.next(), iterator));
         }
       }
     }
@@ -53,7 +53,7 @@ public class ExternalSort {
 
       // Replace extracted data with next minimum in its source.
       if (entry.source.hasNext()) {
-        queue.add(new ResultEntry<>(
+        queue.add(new ResultEntry(
             entry.source.next(), entry.source));
       }
       return entry.value;
@@ -65,7 +65,7 @@ public class ExternalSort {
     return new Iterable<T>() {
       @Override
       public Iterator<T> iterator() {
-        return new MergeResultIterator<>(sortedData);
+        return new MergeResultIterator(sortedData);
       }
     };
   }

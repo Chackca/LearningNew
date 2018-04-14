@@ -95,7 +95,7 @@ public class 今日头条6周年活动小彩蛋 {
     /*public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());
-        List<String> list = new ArrayList<>(n);
+        List<String> list = new ArrayList(n);
         int result = 0;
         for (int i = 0; i <n;i++){
             list.add(i,sc.nextLine());

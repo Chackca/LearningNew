@@ -9,10 +9,10 @@ public class 题62圆圈中最后剩下的数字 {
 	private static int lastRemaining(int n, int m) {
 		if(n<1||m<1)
             return -1;
-        ListNode<Integer> head = new ListNode<>(0);
+        ListNode<Integer> head = new ListNode(0);
         ListNode<Integer> cur = head;
         for(int i=1;i<n;i++){
-            ListNode<Integer> node = new ListNode<>(i);
+            ListNode<Integer> node = new ListNode(i);
             cur.next = node;
             cur = cur.next;
         }

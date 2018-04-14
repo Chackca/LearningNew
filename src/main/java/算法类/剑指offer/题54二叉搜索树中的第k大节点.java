@@ -32,13 +32,13 @@ public class 题54二叉搜索树中的第k大节点 {
 	}
 
 	public static void main(String[] args){
-        TreeNode<Integer> root = new TreeNode<>(5);
-        root.left = new TreeNode<>(3);
-        root.left.left = new TreeNode<>(2);
-        root.left.right = new TreeNode<>(4);
-        root.right = new TreeNode<>(7);
-        root.right.left = new TreeNode<>(6);
-        root.right.right = new TreeNode<>(8);
+        TreeNode<Integer> root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.right = new TreeNode(7);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(8);
         
         System.out.println(kthNode(root,3));//4
         System.out.println(kthNode(root,6));//7

@@ -16,8 +16,8 @@ public class 题592队列的最大值 {
         
         
         public QueueWithMax() {
-            this.queueData = new ArrayDeque<>();
-            this.queueMax = new ArrayDeque<>();
+            this.queueData = new ArrayDeque();
+            this.queueMax = new ArrayDeque();
             this.currentIndex = 0;
         }
         
@@ -31,7 +31,7 @@ public class 题592队列的最大值 {
         	//若要插入的值大于存储最大值的队列的队尾元素，则将其队尾元素移除
             while (!queueMax.isEmpty()&&value.compareTo(queueMax.getLast().value)>=0)
                 queueMax.removeLast();
-            InternalData<T> addData = new InternalData<>(value,currentIndex);
+            InternalData<T> addData = new InternalData(value,currentIndex);
             queueMax.addLast(addData);
             queueData.addLast(addData);
             currentIndex++;
@@ -59,7 +59,7 @@ public class 题592队列的最大值 {
 	
 	
     public static void main(String[] args) {
-        QueueWithMax<Integer> queue = new QueueWithMax<>();
+        QueueWithMax<Integer> queue = new QueueWithMax();
         //队尾进
         queue.pushBack(3);
         System.out.println(queue.max());

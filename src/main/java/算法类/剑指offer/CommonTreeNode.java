@@ -10,7 +10,7 @@ public class CommonTreeNode<T> {
 	
 	public CommonTreeNode(T val) {
 		this.val = val;
-		children = new LinkedList<>();
+		children = new LinkedList();
 	}
 	
 	
