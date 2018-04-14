@@ -1,6 +1,6 @@
 package 算法类.排序算法;
 
-
+import org.junit.*;
 
 public class 希尔排序 implements Sort {
 
@@ -33,7 +33,7 @@ public class 希尔排序 implements Sort {
         }
     }
     @Test
-    private void testShellSort(){
+    public void testShellSort(){
         int[] data = {5,4,3,1,2,6,10,7,2,2,2,2,8,9,45};
         shellSort(data);
         System.out.print("数组希尔排序：\t");

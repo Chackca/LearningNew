@@ -1,6 +1,6 @@
 package 算法类.动态规划;
 
-
+import org.junit.*;
 
 /**  https://blog.csdn.net/ls5718/article/details/52227908
     背包问题主要是指一个给定容量的背包、若干具有一定价值和重量的物品，

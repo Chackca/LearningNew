@@ -1,13 +1,10 @@
 package 算法类.剑指offer;
+import org.junit.*;
 
 public class sortUtils {
 	
 	//基数排序
-	
-	
-	
-	
-	
+
 	
 	/*	堆排序：堆排序的基本思想是：将待排序序列构造成一个大顶堆，
 		此时，整个序列的最大值就是堆顶的根节点。将其与末尾元素进行交换，
@@ -51,7 +48,7 @@ public class sortUtils {
 
 	//堆排序测试
 	@Test
-	private void heapSortTest(){
+	public void heapSortTest(){
         int[] data = {5,4,3,1,5,6,4,5,2,6,10,7,12};
         System.out.println("数组堆排序：\t");
         heapSort(data);
@@ -95,7 +92,7 @@ public class sortUtils {
 	}
 	//桶排序测试
 	@Test
-	private void bucketSortTest(){
+    public void bucketSortTest(){
         int[] data = {5,4,3,1,2,6,10,7,7,4,12};
         System.out.println("数组桶排序：\t");
         BucketSort(data);
@@ -218,7 +215,7 @@ public class sortUtils {
 	}
 	//快速排序测试
 	@Test
-	private void testQuickSort(){
+    public void testQuickSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         quickSort(data,0,data.length-1);
         System.out.print("数组快速排序：\t");
@@ -297,7 +294,7 @@ public class sortUtils {
         }
     }
     @Test
-    private void testShellSort(){
+    public void testShellSort(){
         int[] data = {5,4,3,1,2,6,10,7,2,2,2,2,8,9,45};
         shellSort(data);
         System.out.print("数组希尔排序：\t");
@@ -331,7 +328,7 @@ public class sortUtils {
 	}
 	
 	@Test
-	private void testSelectionSort(){
+    public void testSelectionSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         selectionSort(data);
         System.out.print("数组选择排序：\t");
@@ -380,7 +377,7 @@ public class sortUtils {
 	
 	
 	@Test
-	private void testInsertionSort(){
+    public void testInsertionSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         insertionSort2(data);
         System.out.print("数组插入排序：\t");
@@ -409,7 +406,7 @@ public class sortUtils {
 		return;
 	}
 	@Test
-	private void testBubbleSort(){
+    public void testBubbleSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         bubbleSort(data);
         System.out.print("数组冒泡排序：\t");
