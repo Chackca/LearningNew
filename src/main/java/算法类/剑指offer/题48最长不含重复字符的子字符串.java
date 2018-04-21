@@ -11,6 +11,8 @@ public class 题48最长不含重复字符的子字符串 {
 		int maxLength = 0;		
 		//1.定义一个长度为26的数组，初始化其值都为0，用于存储每一个最近出现的字母的索引
 		int[] position = new int[26];
+		//int maxStrLeftIndex = 0;
+		//int maxStrRightIndex = 0;
 		for(int i=0;i<position.length;i++)
 			position[i] = -1;
 		
@@ -19,18 +21,25 @@ public class 题48最长不含重复字符的子字符串 {
 			//将当前遍历到的字符串的值存储到position数组中
 			int preIndex = position[string.charAt(i)-'a'];
 			//判断当前的值是否在之前出现过，判断当前的值与之前出现过的值的差是否大于当前的最长子字符串
-			if(preIndex < 0 || i-preIndex>curLength)
+			if(preIndex < 0 || i-preIndex>curLength)//没有出现过 || 当前索引-之前出现的索引 > 当前遍历的长度
 				curLength++;
 			else{//当前出现的值在当前的最长子数组中也有出现
-				if(curLength>maxLength)
-					maxLength=curLength;
+				if(curLength>maxLength) {
+					maxLength = curLength;
+					//maxStrLeftIndex = i-curLength;
+					//maxStrRightIndex = i;
+				}
 				curLength=i-preIndex;
 			}
 			//将当前遍历到的值更新到position数组中
 			position[string.charAt(i) - 'a']=i;
 		}
-		if(curLength>maxLength)
-			maxLength=curLength;
+		if(curLength>maxLength) {
+			maxLength = curLength;
+			//maxStrLeftIndex = string.length()-curLength;
+			//maxStrRightIndex = string.length();
+		}
+		//System.out.println(string.substring(maxStrLeftIndex,maxStrRightIndex));
 		return maxLength;
 	}
 	
@@ -38,10 +47,12 @@ public class 题48最长不含重复字符的子字符串 {
 	
 	public static void main(String[] args){
 		//System.out.println(new String("aaa").valueOf(false));
-		
-		
-        System.out.println(longestSubstringWithoutDup("arabcacfr"));
-        System.out.println(longestSubstringWithoutDup("abcdefaaa"));
+
+		System.out.println(longestSubstringWithoutDup("arabcacfr"));
+		System.out.println(longestSubstringWithoutDup("abcdefaaa"));
+		System.out.println(longestSubstringWithoutDup("qwertyuioasdfghjkxcvbnujmyhntgbrfvedc"));
+		System.out.println(longestSubstringWithoutDup("abcdcbaef"));
+
         
         
         /*String string=new String(" ");
