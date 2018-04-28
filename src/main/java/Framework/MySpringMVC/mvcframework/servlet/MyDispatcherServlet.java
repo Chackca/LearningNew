@@ -98,7 +98,7 @@ public class MyDispatcherServlet extends HttpServlet{
                 return;
             }
 
-            //获取方法的参数裂变
+            //获取方法的参数列表
             Class<?>[] paramTypes = handler.method.getParameterTypes();
 
             //保存所有需要自动赋值的参数值
@@ -107,20 +107,24 @@ public class MyDispatcherServlet extends HttpServlet{
             //这是属于J2EE的内容
             Map<String,String[]> params = req.getParameterMap();
             for (Map.Entry<String,String[]> param : params.entrySet()){
+                //取出当前参数的值
                 String value = Arrays.toString(param.getValue()).replaceAll("\\[|\\]","").replaceAll(",\\s",",");
-
-                //如果找到匹配的对象，则开始填充数值
+                //如果找到匹配的对象，则开始填充数值，这里的判断为：handler中不包含参数的名字为当前参数名，则跳过
                 if (!handler.paramIndexMapping.containsKey(param.getKey())) continue;
-                int index = handler.paramIndexMapping.get(param.getKey());
+                int index = handler.paramIndexMapping.get(param.getKey());//否则就是包含，取出用户传进来的这个参数在handler方法里面对应的位置索引
                 paramValues[index] = convert(paramTypes[index],value);
             }
 
 
             //设置方法的request和response对象
-            int reqIndex = handler.paramIndexMapping.get(HttpServletRequest.class.getName());
-            paramValues[reqIndex] = req;
-            int respIndex = handler.paramIndexMapping.get(HttpServletResponse.class.getName());
-            paramValues[respIndex] = resp;
+            if (handler.paramIndexMapping.get(HttpServletRequest.class.getName())!=null) {
+                int reqIndex = handler.paramIndexMapping.get(HttpServletRequest.class.getName());
+                paramValues[reqIndex] = req;
+            }
+            if (handler.paramIndexMapping.get(HttpServletResponse.class.getName())!=null) {
+                int respIndex = handler.paramIndexMapping.get(HttpServletResponse.class.getName());
+                paramValues[respIndex] = resp;
+            }
 
             handler.method.invoke(handler.controller,paramValues);
 
@@ -130,15 +134,21 @@ public class MyDispatcherServlet extends HttpServlet{
     }
 
     private Object convert(Class<?> type,String value){
+        //如果参数要求的是Integer类型，则将String类型转换为Integer类型，如果用户传入的是id = aaa，则会在这里抛出异常
         if (Integer.class == type){
-            return Integer.valueOf(value);
+            try {
+                return Integer.valueOf(value);
+            }catch (Exception e){
+                System.out.println("参数转换错误，可能是int类型里面包含了非数字字符");
+                e.printStackTrace();
+            }
         }
         return value;
     }
 
     private Handler getHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+        if (handlerMapping.isEmpty()) return null;
 
-        if (handlerMapping.isEmpty())return null;
         String url = req.getRequestURI();
         String contextPath = req.getContextPath();
         url = url.replace(contextPath,"").replaceAll("/+","/");
@@ -146,7 +156,8 @@ public class MyDispatcherServlet extends HttpServlet{
             try {
                 Matcher matcher = handler.pattern.matcher(url);
                 //如果没有匹配上继续下一个匹配
-                if (!matcher.matches())continue;
+                if (!matcher.matches())
+                    continue;
                 return handler;
             }catch (Exception e){
                 throw e;
@@ -242,7 +253,7 @@ public class MyDispatcherServlet extends HttpServlet{
             //3、遍历每个域
             for (Field field : fields){
                 //4、如果该字段没有用@MyAutowried赋值，则跳过该字段
-                if (field.isAnnotationPresent(MyAutowried.class)) continue;
+                if (!field.isAnnotationPresent(MyAutowried.class)) continue;
 
                 //5、否则，取出@MyAutowired()这个注解
                 MyAutowried myAutowried = field.getAnnotation(MyAutowried.class);
@@ -250,14 +261,14 @@ public class MyDispatcherServlet extends HttpServlet{
                 String beanName = myAutowried.value().trim();
                 //7、如果@MyAutowried()括号里面没有设置内容
                 if ("".equals(beanName)){
-                    //设置名字为域里面设置的名字
+                    //设置名字为域类型的名字。带有具体前缀地址，比如获取到的是IDemoService接口类型
                     beanName = field.getType().getName();
                 }
                 //要想访问到私有的，或者受保护的，我们强制授权访问
                 field.setAccessible(true);
 
                 try {
-                    //8、将当前域用ioc容器里面的实例赋上值
+                    //8、将当前域用ioc容器里面的实例赋上值,也就是依赖注入
                     field.set(entry.getValue(),ioc.get(beanName));
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -318,19 +329,22 @@ public class MyDispatcherServlet extends HttpServlet{
         protected Object controller;//保存方法对应的实例
         protected Method method;  //保存映射的文件
         protected Pattern pattern;
-        protected Map<String,Integer> paramIndexMapping;//参数顺序
+        protected Map<String,Integer> paramIndexMapping;//参数顺序，第一个参数为@MyRequestParam()括号里面的值，第二个参数为该参数位于该方法第几个参数
 
         protected Handler(Pattern pattern,Object controller,Method method){
             this.controller = controller;
             this.method = method;
             this.pattern = pattern;
+
+            paramIndexMapping = new HashMap<String,Integer>();
+            putParamIndexMapping(method);
         }
 
         private void putParamIndexMapping(Method method){
             //提取方法中加了注解的参数
-            Annotation[][] pa = method.getParameterAnnotations();
-            for (int i = 0; i < pa.length ; i++){
-                for (Annotation a : pa[i]){
+            Annotation[][] param = method.getParameterAnnotations(); //获取该方法的参数，包括不带注解的
+            for (int i = 0; i < param.length ; i++){
+                for (Annotation a : param[i]){
                     if (a instanceof MyRequestParam){
                         String paramName = ((MyRequestParam) a).value();
                         if (!"".equals(paramName.trim())){
