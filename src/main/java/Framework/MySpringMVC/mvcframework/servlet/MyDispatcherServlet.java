@@ -25,7 +25,7 @@ public class MyDispatcherServlet extends HttpServlet{
     //所有的配置信息都存入了properties中
     private Properties properties = new Properties();
 
-    private List<String> classNames = new ArrayList<String>();
+    private List<String> classNames = new ArrayList<String>();//这里存储的类的全限定名
 
     private Map<String,Object> ioc = new HashMap<String,Object>();
 
@@ -107,9 +107,9 @@ public class MyDispatcherServlet extends HttpServlet{
             //这是属于J2EE的内容
             Map<String,String[]> params = req.getParameterMap();
             for (Map.Entry<String,String[]> param : params.entrySet()){
-                //取出当前参数的值
+                //取出当前参数的值，比如id=23，则取出23
                 String value = Arrays.toString(param.getValue()).replaceAll("\\[|\\]","").replaceAll(",\\s",",");
-                //如果找到匹配的对象，则开始填充数值，这里的判断为：handler中不包含参数的名字为当前参数名，则跳过
+                //如果找到匹配的对象，则开始填充数值，这里的判断为：handler中不包含参数的名字为当前参数名，则跳过，比如不含有id这个参数
                 if (!handler.paramIndexMapping.containsKey(param.getKey())) continue;
                 int index = handler.paramIndexMapping.get(param.getKey());//否则就是包含，取出用户传进来的这个参数在handler方法里面对应的位置索引
                 paramValues[index] = convert(paramTypes[index],value);
@@ -125,7 +125,7 @@ public class MyDispatcherServlet extends HttpServlet{
                 int respIndex = handler.paramIndexMapping.get(HttpServletResponse.class.getName());
                 paramValues[respIndex] = resp;
             }
-
+            //执行该方法，第一个参数为哪个class对象，第二个参数为含有的参数数组
             handler.method.invoke(handler.controller,paramValues);
 
         }catch (Exception e){
@@ -208,13 +208,14 @@ public class MyDispatcherServlet extends HttpServlet{
         //如果不为空，将刚刚扫描进来的所有的className初始化
         for (String className : classNames){
             try {
+                //根据类的全限定名加载其class文件
                 Class<?> clazz = Class.forName(className);
                 //接下来进入Bean的实例化阶段
                 //ioc容器规则
                 //1、key默认用类名首字母小写
                 //2、如果用户自定义名字，那么要优先选择用自定义名字
                 //3、如果是接口的话，可以巧妙地用接口类型作为key
-                if (clazz.isAnnotationPresent(MyController.class)){
+                if (clazz.isAnnotationPresent(MyController.class)){//添加了MyController注解的类无需考虑括号里面的内容，统一用小写首字母存储
                     String beanName = LowerFirstCase(clazz.getSimpleName());
                     ioc.put(beanName,clazz.newInstance());
                 }else if (clazz.isAnnotationPresent(MyService.class)){
@@ -225,12 +226,12 @@ public class MyDispatcherServlet extends HttpServlet{
                         beanName = LowerFirstCase(clazz.getSimpleName());
                     }
                     Object instance = clazz.newInstance();
-
+                    //找到这个类实现的所有接口，根据接口名字存储多个同样的实现类
                     Class<?>[] interfaces = clazz.getInterfaces();
                     for (Class<?> classes : interfaces){
                         ioc.put(classes.getName(),instance);
                     }
-                }else {
+                }else {//案例：检测到当前类文件为一个接口，则跳过
                     continue;
                 }
 
@@ -264,12 +265,12 @@ public class MyDispatcherServlet extends HttpServlet{
                     //设置名字为域类型的名字。带有具体前缀地址，比如获取到的是IDemoService接口类型
                     beanName = field.getType().getName();
                 }
-                //要想访问到私有的，或者受保护的，我们强制授权访问
+                //要想访问到私有的，或者受保护的，必须强制授权访问
                 field.setAccessible(true);
 
                 try {
-                    //8、将当前域用ioc容器里面的实例赋上值,也就是依赖注入
-                    field.set(entry.getValue(),ioc.get(beanName));
+                    //8、将当前域用ioc容器里面的实例赋上值,也就是依赖注入，给对象注入实现类
+                    field.set(entry.getValue(),ioc.get(beanName));//第一个参数为当前类的实例对象，第二个参数为将要给这个域注入的值
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     continue;

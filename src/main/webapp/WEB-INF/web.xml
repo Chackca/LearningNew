@@ -4,12 +4,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!--此web文件为MySpringMVC的启动检查文件，需要测试时，将名字改为web.xml-->
     <servlet>
         <servlet-name>MySpringMVC</servlet-name>
         <servlet-class>Framework.MySpringMVC.mvcframework.servlet.MyDispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>MyApplication.properties</param-value>
+            <param-value>MySpringMVC/MyApplication.properties</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
