@@ -16,7 +16,8 @@ public class 插入排序 implements Sort {
         int now = 0;
         int index = 0;
         for (int i = 1; i < data.length; i++) {
-            index = i;
+            //因为需要对索引进行计算，但是不能动用i，所以生辰一个index来作为计算用的索引
+            index = i;//存储当前临时索引
             now = data[i];//存储当前值
             while (index>0&&data[index-1]>now) {
                 data[index]=data[index-1];//将当前值的位置用其前一个元素替代
@@ -27,7 +28,7 @@ public class 插入排序 implements Sort {
     }
 
     @Test
-    private void testInsertionSort(){
+    public void testInsertionSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         insertionSort(data);
         System.out.print("数组插入排序：\t");
@@ -43,13 +44,13 @@ public class 插入排序 implements Sort {
     public static void insertionSort2(int[] data){
         if(data == null) return;
         int curValue = 0;
-        int temp = 0;
+        int index = 0;
         for (int i = 1; i < data.length; i++) {
-            temp = i;
+            index = i;
             curValue = data[i];
-            while (temp-1>=0&&data[temp-1]>curValue) {
-                swapUtil.swap(data, temp, temp-1);
-                temp--;
+            while (index-1>=0&&data[index-1]>curValue) {
+                swapUtil.swap(data, index, index-1);
+                index--;
             }
         }
     }

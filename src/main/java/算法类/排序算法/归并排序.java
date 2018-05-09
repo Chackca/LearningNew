@@ -1,5 +1,7 @@
 package 算法类.排序算法;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 public class 归并排序 implements Sort {
@@ -11,10 +13,6 @@ public class 归并排序 implements Sort {
 
     /*
 	 * 归并排序
-	 * 测试代码
-	 *  int[] data = {9,8,7,6,5,4,3,2,1};
-        sortUtils.Merge(data);
-        System.out.println(Arrays.toString(data));
 	 */
     public static void Merge(int[] data){
         if (data==null) return;
@@ -54,9 +52,9 @@ public class 归并排序 implements Sort {
         }
     }
 
-
-    public static void main(String[] args) {
-        int[] data = {9,8,7,6,5,4,3,2,1};
+    @Test
+    public void testMergerSort() {
+        int[] data = {9,3,7,6,5,4,2,8,1};
         Merge(data);
         System.out.println(Arrays.toString(data));
     }

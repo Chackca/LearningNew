@@ -26,8 +26,9 @@ public class 冒泡排序 implements Sort {
         }
         return;
     }
+
     @Test
-    private void testBubbleSort(){
+    public void testBubbleSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         bubbleSort(data);
         System.out.print("数组冒泡排序：\t");

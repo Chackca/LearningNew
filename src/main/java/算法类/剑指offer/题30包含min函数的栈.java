@@ -23,7 +23,7 @@ public class 题30包含min函数的栈 {
 	
 	
 	//静态内部类
-	static class StackWithMin<T extends Comparable>{	
+	static class StackWithMin<T extends Comparable>{
 		Stack<T> stackData = new Stack();
 		Stack<T> stackMin = new Stack();
 		public void push(T data) {

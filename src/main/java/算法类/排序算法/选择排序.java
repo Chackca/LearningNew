@@ -25,17 +25,6 @@ public class 选择排序 implements Sort {
         }
     }
 
-    public static void main(String[] args) {
-        int[] data = {5,4,3,1,2,6,10,7};
-        selectionSort(data);
-        System.out.print("数组选择排序：\t");
-        for(int item: data){
-            System.out.print(item);
-            System.out.print('\t');
-        }
-        System.out.println();
-    }
-
     @Test
     public void testSelectionSort(){
         int[] data = {5,4,3,1,2,6,10,7};
