@@ -1,9 +1,8 @@
-package 算法类.剑指offer;
+package 算法类.其他题目;
 
 import java.util.Scanner;
 
 /**
- * 未完成：
  * 要求：
  * 1、去除重复字符串
  * 2、重复的字符只有一个则不用理会
@@ -15,6 +14,77 @@ public class 阿里巴巴智能客服字符串 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
+            String str = sc.nextLine();
+            int length = str.length();
+            StringBuilder SB = new StringBuilder();
+            for (int i = 0; i < length ; i++){
+                int temp = i;
+                char cha = str.charAt(i);
+                if (cha>='0' && cha<='9'){
+                    SB.append(cha);
+                    continue;
+                }
+                boolean inFor = false;
+                for (int j = SB.length()-1 ; j>=0 ; j--){
+                    inFor = true;
+                    if (SB.charAt(j) == cha){
+                        while ( j<=SB.length()-1 && temp<length && SB.charAt(j) == str.charAt(temp) ){
+                            temp++;
+                            j++;
+                        }
+                        if (j<=SB.length()-1 && temp == length ){
+                            inFor = false;
+                            break;
+                        }
+                        if (j<=SB.length()-1 && temp<length && SB.charAt(j) != str.charAt(temp)){
+                            inFor = false;
+                            break;
+                        }else {
+                            if (temp -1 == i) {
+                                inFor = false;
+                            }
+                            i = temp-1;
+                            break;
+                        }
+                    }
+                    if (j==0){
+                        SB.append(cha);
+                    }
+                }
+                if (!inFor){
+                    SB.append(cha);
+                }
+
+            }
+            System.out.println(SB.toString());
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*while (sc.hasNext()){
             String str = sc.nextLine();
             int length = str.length();
             StringBuilder sb = new StringBuilder();
@@ -49,6 +119,6 @@ public class 阿里巴巴智能客服字符串 {
             }
 
             System.out.println(sb.toString());
-        }
+        }*/
     }
 }

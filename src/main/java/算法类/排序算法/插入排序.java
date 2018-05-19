@@ -19,7 +19,7 @@ public class 插入排序 implements Sort {
             //因为需要对索引进行计算，但是不能动用i，所以生辰一个index来作为计算用的索引
             index = i;//存储当前临时索引
             now = data[i];//存储当前值
-            while (index>0&&data[index-1]>now) {
+            while (index-1>=0&&data[index-1]>now) {
                 data[index]=data[index-1];//将当前值的位置用其前一个元素替代
                 index--;
             }
@@ -54,4 +54,5 @@ public class 插入排序 implements Sort {
             }
         }
     }
+
 }

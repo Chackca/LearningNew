@@ -1,9 +1,13 @@
 package 算法类.排序算法;
 
+import org.junit.Test;
+import 自制集合类.MyHashMap.Map;
+
 public class 二分查找 {
 
     //使用递归实现，时间O(log2 N)，空间O(log2N )
     public static int recursionBinarySearch(int[] arr,int key,int low,int high){
+        //递归要在开头做好判断
         if(key < arr[low] || key > arr[high] || low > high){
             return -1;
         }
@@ -28,7 +32,7 @@ public class 二分查找 {
         if(key < arr[low] || key > arr[high] || low > high){
             return -1;
         }
-
+        ///非递归要用while循环
         while(low <= high){
             middle = (low + high) / 2;
             if(arr[middle] > key){
@@ -50,15 +54,16 @@ public class 二分查找 {
 
         int[] arr = {1,3,5,7,9,11};
         int key = 9;
-        //int position = recursionBinarySearch(arr,key,0,arr.length - 1);
+        int position = recursionBinarySearch(arr,key,0,arr.length - 1);
 
-        int position = commonBinarySearch(arr, key);
+        //int position = commonBinarySearch(arr, key);
 
         if(position == -1){
             System.out.println("查找的是"+key+",序列中没有该数！");
         }else{
             System.out.println("查找的是"+key+",找到位置为："+position);
         }
-
     }
+
+
 }

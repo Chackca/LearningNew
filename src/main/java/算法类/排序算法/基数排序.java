@@ -1,55 +1,44 @@
 package 算法类.排序算法;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class 基数排序  implements Sort {
 
-	@Override
+
+    @Override
 	public void executeSort(int[] data) {
 		radixSort(data);
 	}
-	
-	
 
-	/*private void radixSort(int[] data) {
-		
-	}*/
-
-
-	//自己写的
     //若有要求不能修改原数组则按下面的方式，否则output数组可以不需要
-	private static void countSort2(int[] a, int exp) {
-		int[] output = new int[a.length];    // 存储"被排序数据"的临时数组
-		LinkedList[] buckets = new LinkedList[10];
+	private static void countSort(int[] data, int exp) {
+	    final int capacity = 10;
 
-	    for (int i = 0; i < buckets.length; i++) {
-	    	buckets[i]=new LinkedList();
+		ArrayList<LinkedList<Integer>> buckets = new ArrayList(capacity);
+
+	    for (int i = 0; i < capacity; i++) {
+	    	buckets.add(i,new LinkedList());
 		}
-
+        //offer.poll按照先进先出的方式
 	    // 将数据存储在buckets[]中
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < data.length; i++){
         	//int temp = (a[i]/exp)%10;
-            buckets[(a[i]/exp)%10].offer(a[i]);
+            buckets.get((data[i]/exp)%10).offer(data[i]);
         }
         int temp = 0;
-        // 将数据存储到临时数组output[]中
         for (int j = 0; j < 10; j++) {
-        	while (buckets[j].peek()!=null) {
-        		output[temp++]=(int) buckets[j].poll();
+        	while (buckets.get(j).peek()!=null) {
+        		data[temp++]=(int) buckets.get(j).poll();
     		}
 		}
 
-        // 将排序好的数据赋值给a[]
-        for (int i = 0; i < a.length; i++)
-            a[i] = output[i];
-
-        output = null;
-        buckets = null;
+        //buckets = null;
 
 	}
 
-	
-	
 	
 	/*
      * 获取数组a中最大值
@@ -62,6 +51,40 @@ public class 基数排序  implements Sort {
                 max = a[i];
         return max;
     }
+
+    /*
+     * 基数排序
+     * a -- 数组
+     */
+    public static void radixSort(int[] a) {
+        if (a == null){
+            return;
+        }
+        int exp;    // 指数。当对数组按个位进行排序时，exp=1；按十位进行排序时，exp=10；...
+        int max = getMax(a);    // 数组a中的最大值
+        // 从个位开始，对数组a按"指数"进行排序
+        for (exp = 1; max/exp > 0; exp *= 10)
+            countSort(a, exp);
+    }
+
+    @Test
+    public void testRadixSort() {
+        int i;
+        int a[] = {53, 3, 542, 748, 14, 214, 154, 63, 616};
+
+        System.out.printf("before sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.printf("\n");
+
+        radixSort(a);    // 基数排序
+
+        System.out.printf("after  sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.printf("\n");
+    }
+
 
     /*
      * 对数组按照"某个位数"进行排序(桶排序)
@@ -77,7 +100,7 @@ public class 基数排序  implements Sort {
      *    ...
      */
     //若有要求不能修改原数组则按下面的方式，否则output数组可以不需要
-    private static void countSort(int[] a, int exp) {
+    private static void countSort2(int[] a, int exp) {
         //int output[a.length];    // 存储"被排序数据"的临时数组
         int[] output = new int[a.length];    // 存储"被排序数据"的临时数组
         int[] buckets = new int[10];
@@ -106,34 +129,7 @@ public class 基数排序  implements Sort {
         buckets = null;
     }
 
-    /*
-     * 基数排序
-     * a -- 数组
-     */
-    public static void radixSort(int[] a) {
-        int exp;    // 指数。当对数组按个位进行排序时，exp=1；按十位进行排序时，exp=10；...
-        int max = getMax(a);    // 数组a中的最大值
-        // 从个位开始，对数组a按"指数"进行排序
-        for (exp = 1; max/exp > 0; exp *= 10)
-            countSort2(a, exp);
-    }
 
-    public static void main(String[] args) {
-        int i;
-        int a[] = {53, 3, 542, 748, 14, 214, 154, 63, 616};
-
-        System.out.printf("before sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
-
-        radixSort(a);    // 基数排序
-
-        System.out.printf("after  sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
-    }
 	
     
     
@@ -168,7 +164,8 @@ public class 基数排序  implements Sort {
             m++;
         }
     }
-    public static void main(String[] args)
+    @Test
+    public void testRadixSort2()
     {
         int[]data =
         {73, 22, 93, 43, 55, 14, 28, 65, 39, 81, 33, 100,2121,1154,141,1451};
@@ -178,4 +175,8 @@ public class 基数排序  implements Sort {
             System.out.print(data[i] + " ");
         }
     }*/
+
+
+
+
 }

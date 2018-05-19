@@ -61,6 +61,7 @@ public class 归并排序 implements Sort {
 
 
 
+
     //另外一种写法，与前一种的区别在于：前一种在递归之前就开辟了空间，这个需要频繁开辟
     public static int[] mergeSort(int[] data){
         if(data==null || data.length<=1)

@@ -18,6 +18,7 @@ public class 快速排序  implements Sort {
 		quickSort(data,start,index-1);
 		quickSort(data,index+1,end);
 	}
+
 	//作用：根据输入data【】，start与end，返回data[start]在排序数组中准确的位置
 	private static int partition(int[] data, int start, int end) {
 		if(start>=end)
@@ -68,13 +69,13 @@ public class 快速排序  implements Sort {
 				swapUtil.swap(data, start, end);
 		}
 		//当执行到这里，start=end
-		data[start]=target;
+		//data[start]=target;//因为上面已经用swap交换了，所以不需要此步骤
 		//System.out.println(start);
 		return start;
 	}
 	//快速排序测试
 	@Test
-	private void testQuickSort(){
+	public void testQuickSort(){
         int[] data = {5,4,3,1,2,6,10,7};
         quickSort(data,0,data.length-1);
         System.out.print("数组快速排序：\t");
@@ -84,8 +85,7 @@ public class 快速排序  implements Sort {
         }
         System.out.println();
     }
-	
-	
+
 	/*
 	 * 快速排序方式2：随机选择数组中的某一个数作为分界放到数组最后进行排序进行排序
 	 */

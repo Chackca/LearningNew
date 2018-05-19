@@ -36,5 +36,4 @@ public class 选择排序 implements Sort {
         }
         System.out.println();
     }
-
 }
