@@ -57,6 +57,9 @@ public class 题7重建二叉树 {
         System.out.println(root.toFrontString());
         System.out.println(root.toMidString());
         System.out.println(root.toBackString());
+
+
+        System.out.println(Math.pow(2,3));
     }
 
 	
