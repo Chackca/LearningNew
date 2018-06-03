@@ -3,7 +3,8 @@ package 算法类.剑指offer;
  * 理解有限
  */
 public class 题24反转链表 {
-	
+
+	//采用迭代的做法
 	public static ListNode<Integer> ReverseList(ListNode<Integer> head) {
 		//若输入为空或者为一个节点的链表
 		if(head==null || head.next==null)
@@ -11,8 +12,8 @@ public class 题24反转链表 {
         ListNode<Integer> pre = null;
         ListNode<Integer> cur = head;
         ListNode<Integer> post = head.next;
-        while(true){//i-->j-->k
-        	cur.next = pre;	//当前节点的下一个节点为原本的上一个节点（当前节点不变）i<--j---k
+        while(true){//pre-->cur-->post
+        	cur.next = pre;	//当前节点的下一个节点为原本的上一个节点（当前节点不变）pre<--cur---post
         	pre = cur;		//将当前节点保存为下一个节点（当前节点不变）
         	cur = post;		//将当前节点设置为下一个节点（当前节点变化），此时下一个节点的状态未知
         	if (post!=null) {//判断下一个节点的状态
@@ -20,7 +21,6 @@ public class 题24反转链表 {
 			}else{
 				return pre;
 			}
-        	
         }
 	}
 

@@ -1,7 +1,8 @@
 package 算法类.剑指offer;
 
 public class 题562数组中唯一只出现一次的数字 {
-	
+
+	//不支持负数
 	private static int findNumsAppearOnce(int[] data) {
 		if (data==null||data.length<4) {
 			return 0;
@@ -35,7 +36,7 @@ public class 题562数组中唯一只出现一次的数字 {
 	
 	
 	public static void main(String[] args){
-        int[] data = new int[]{2,2,2,4,4,4,8,1,1,1,8,8,6};
+        int[] data = new int[]{2,2,2,4,4,4,8,1,1,1,8,8,6,};//6
         int result = findNumsAppearOnce(data); // 6
         System.out.println(result);
         

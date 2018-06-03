@@ -1,4 +1,4 @@
-package 算法类.Leecode;
+package 算法类.Leetcode.栈;
 
 import java.util.Stack;
 

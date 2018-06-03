@@ -1,4 +1,4 @@
-package 算法类.Leecode;
+package 算法类.Leetcode.链表;
 
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.
@@ -9,7 +9,7 @@ package 算法类.Leecode;
  * 思路：使用归并排序加快慢指针的做法，每次找到链表的中间节点，再进行左边排序，右边排序
  * 找到中间节点用快慢指针的方法
  */
-public class 排序一个链表 {
+public class 使用归并排序来排序一个链表 {
 
 
      //Definition for singly-linked list.
