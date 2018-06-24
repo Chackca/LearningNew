@@ -1,6 +1,8 @@
 package 算法类.排序算法;
 
 import org.junit.*;
+import 算法类.SortTestUtil;
+
 public class 选择排序 implements Sort {
     @Override
     public void executeSort(int[] data) {
@@ -27,7 +29,7 @@ public class 选择排序 implements Sort {
 
     @Test
     public void testSelectionSort(){
-        int[] data = {5,4,3,1,2,6,10,7};
+        int[] data = SortTestUtil.generateRandomSortArrayWithoutRepeatNumber(50,0,20);
         selectionSort(data);
         System.out.print("数组选择排序：\t");
         for(int item: data){

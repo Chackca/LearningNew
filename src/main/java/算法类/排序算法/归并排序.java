@@ -52,6 +52,26 @@ public class 归并排序 implements Sort {
         }
     }
 
+
+
+    //自底向上的归并排序,未实现
+    /*public static void MergeSortBU(int[] data){
+        if (data==null) return;
+        int length = data.length;
+        for (int sz = 1; sz<=length; sz+=sz){
+            for ( int i = 0 ; i + sz < length ; i+=sz+sz){
+                //对data[i...i+sz-1]和data[i+sz...i+2*sz-1]进行合并
+                merge(data,i,i+sz-1,Math.min((i+sz+sz-1),length-1);
+            }
+        }
+
+    }
+
+    private static void merge(int[] data, int i, int i1, int i2) {
+
+    }*/
+
+
     @Test
     public void testMergerSort() {
         int[] data = {9,3,7,6,5,4,2,8,1};
@@ -62,39 +82,5 @@ public class 归并排序 implements Sort {
 
 
 
-    //另外一种写法，与前一种的区别在于：前一种在递归之前就开辟了空间，这个需要频繁开辟
-    public static int[] mergeSort(int[] data){
-        if(data==null || data.length<=1)
-            return data;
-        mergeSortCore(data,0,data.length-1);
-        return data;
-    }
-    //对data[start~mid]，data[mid+1~end]归并
-    //典型的分治结构：结束条件+分治+和
-    public static void mergeSortCore(int[] data,int start,int end){
-        if(start>=end)
-            return;
-        int mid = start + (end - start)/2;
-        mergeSortCore(data,start,mid);
-        mergeSortCore(data,mid+1,end);
-        mergeSortMerge(data,start,mid,end);
-    }
-    public static void mergeSortMerge(int[] data,int start,int mid,int end){
-        if(end==start)
-            return;
-        int[] temp = new int[end-start+1];
-        int left = start,right = mid+1,tempIndex = 0;
-        while(left<=mid && right<=end){
-            if(data[left]<data[right])
-                temp[tempIndex++] = data[left++];
-            else
-                temp[tempIndex++] = data[right++];
-        }
-        while(left<=mid)
-            temp[tempIndex++] = data[left++];
-        while(right<=end)
-            temp[tempIndex++] = data[right++];
-        for(int i=0;i<temp.length;i++)
-            data[start+i] = temp[i];
-    }
+
 }

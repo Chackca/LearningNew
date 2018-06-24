@@ -1,6 +1,7 @@
 package 算法类.排序算法;
 
 import org.junit.*;
+import 算法类.SortTestUtil;
 
 public class 插入排序 implements Sort {
 
@@ -49,7 +50,7 @@ public class 插入排序 implements Sort {
             index = i;
             curValue = data[i];
             while (index-1>=0&&data[index-1]>curValue) {
-                swapUtil.swap(data, index, index-1);
+                SortTestUtil.swap(data, index, index-1);
                 index--;
             }
         }

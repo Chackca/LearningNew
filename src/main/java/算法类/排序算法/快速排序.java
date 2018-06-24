@@ -1,5 +1,6 @@
 package 算法类.排序算法;
 import org.junit.*;
+import 算法类.SortTestUtil;
 
 public class 快速排序  implements Sort {
 
@@ -59,14 +60,14 @@ public class 快速排序  implements Sort {
 			while (end>start&&data[end]>target) 
 				end--;
 			//执行与左哨兵更换，并让左哨兵走一步
-			if (end>start&&data[end]<target) 
-				swapUtil.swap(data, start, end);
+			if (end>start&&data[end]<target)
+				SortTestUtil.swap(data, start, end);
 			//左哨兵循环找到一个大于目标值的index
 			while(end>start&&data[start]<target)
 				start++;
 			//左哨兵与右哨兵交换，并让右哨兵向左走一步
-			if (end>start&&data[start]>target) 
-				swapUtil.swap(data, start, end);
+			if (end>start&&data[start]>target)
+				SortTestUtil.swap(data, start, end);
 		}
 		//当执行到这里，start=end
 		//data[start]=target;//因为上面已经用swap交换了，所以不需要此步骤
@@ -104,7 +105,7 @@ public class 快速排序  implements Sort {
 		//start<index<end
 		int index = start + (int)(Math.random() * ((end - start) + 1));
 		//将随机选取的目标数放到数组的最后
-		swapUtil.swap(data,index,end);
+		SortTestUtil.swap(data,index,end);
 		//用于记录有多少个小于目标数的数
 		int small = start -1;
 		//遍历数组
@@ -114,12 +115,12 @@ public class 快速排序  implements Sort {
 				small ++ ; //计算加一
 				if (small != index) {
 					//交换i位置与 small位置的数
-					swapUtil.swap(data,i,small);
+					SortTestUtil.swap(data,i,small);
 				}
 			}
 		}
 		small ++ ;
-		swapUtil.swap(data,small,end);
+		SortTestUtil.swap(data,small,end);
 		return 0;
 	}
 }

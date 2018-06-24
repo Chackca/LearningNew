@@ -1,5 +1,7 @@
 package 算法类.排序算法;
 
+import 算法类.SortTestUtil;
+
 public class 堆排序 implements Sort {
 
 	@Override
@@ -25,7 +27,7 @@ public class 堆排序 implements Sort {
 		}
 		//2.交换堆顶元素和末尾元素并重建堆
 		for (int j = data.length - 1; j > 0; j--) {
-			swapUtil.swap(data, 0, j);
+			SortTestUtil.swap(data, 0, j);
 			adjustHeap(data, 0, j);
 			//adjustMinHeap(data,j,data.length);
 		}
@@ -61,7 +63,7 @@ public class 堆排序 implements Sort {
 		}
 		//2.交换堆顶元素和末尾元素并重建堆
 		for (int j = data.length - 1; j > 0; j--) {
-			swapUtil.swap(data, 0, j);
+			SortTestUtil.swap(data, 0, j);
 			adjustMinHeap(data, 0, j);
 		}
 	}
