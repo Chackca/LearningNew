@@ -12,7 +12,7 @@ package 算法类.Leetcode.链表;
 
 public class 查看链表是否有环 {
 
-    static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {

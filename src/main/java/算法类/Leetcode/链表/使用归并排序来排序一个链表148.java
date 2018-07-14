@@ -5,22 +5,24 @@ package 算法类.Leetcode.链表;
  * 在 O（n log n）的时间内，使用恒定的空间复杂度来排序一个链表。
  */
 
+import 算法类.domain.ListNode;
+
 /**
- * 思路：使用归并排序加快慢指针的做法，每次找到链表的中间节点，再进行左边排序，右边排序
+ * 思路：使用归并排序  加  快慢指针的做法，每次找到链表的中间节点，再进行左边排序，右边排序
  * 找到中间节点用快慢指针的方法
  */
-public class 使用归并排序来排序一个链表 {
+public class 使用归并排序来排序一个链表148 {
 
 
      //Definition for singly-linked list.
-     static class ListNode {
+     /*private static class ListNode {
           int val;
           ListNode next;
           ListNode(int x) {
               val = x;
               next = null;
           }
-     }
+     }*/
 
 
 
@@ -32,7 +34,7 @@ public class 使用归并排序来排序一个链表 {
         node.next.next.next.next = new ListNode(4);
         node.next.next.next.next.next = new ListNode(3);
         ListNode res = sortList(node);
-        System.out.println();
+        System.out.println(res);
     }
 
     public static ListNode sortList(ListNode left) {
@@ -43,12 +45,11 @@ public class 使用归并排序来排序一个链表 {
          //分割成两个链表
         ListNode right = mid.next;
         mid.next = null;
-
+        //左边与右边排序
         ListNode newLeft = sortList(left);
         ListNode newRight = sortList(right);
         //归并排序链表
         return sortMerge(newLeft,newRight);
-
     }
 
     //使用一快一慢指针找到中间节点
@@ -63,10 +64,9 @@ public class 使用归并排序来排序一个链表 {
             fast = fast.next.next;
         }
         return slow;
-
     }
 
-
+    //归并排序链表
     private static ListNode sortMerge(ListNode head1, ListNode head2) {
         ListNode left = head1;
         ListNode right = head2;

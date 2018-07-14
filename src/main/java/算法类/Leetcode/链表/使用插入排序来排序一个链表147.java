@@ -1,19 +1,21 @@
 package 算法类.Leetcode.链表;
 
+import 算法类.domain.ListNode;
+
 /**
  * Sort a linked list using insertion sort.
- * 使用插入排序来排序一个链表
+ * 使用插入排序来排序一个链表147
  */
-public class 使用插入排序来排序一个链表 {
+public class 使用插入排序来排序一个链表147 {
 
-    public static class ListNode {
+    /*private static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {
             val = x;
             next = null;
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         ListNode node = new ListNode(2);
@@ -23,12 +25,10 @@ public class 使用插入排序来排序一个链表 {
         node.next.next.next.next = new ListNode(4);
         node.next.next.next.next.next = new ListNode(3);
         ListNode res = Solution.insertionSortList(node);
-        System.out.println();
+        System.out.println(res);
     }
 
     public static class Solution {
-
-
         public static ListNode insertionSortList(ListNode head) {
             //新链表的头(-1)，用于辅助定位新链表头
             ListNode temp = new ListNode(Integer.MIN_VALUE);

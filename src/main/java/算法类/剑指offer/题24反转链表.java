@@ -31,7 +31,6 @@ public class 题24反转链表 {
 		if (head == null || head.next == null) {
 			return head;
 		}
-
 		ListNode<Integer> newHead = reverseList2(head.next);
 		head.next.next = head;
 		head.next = null;

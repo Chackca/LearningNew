@@ -13,7 +13,7 @@ package 算法类.Leetcode.链表;
  */
 public class 找到链表环开始的地方 {
     //Definition for singly-linked list.
-    static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {

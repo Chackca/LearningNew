@@ -11,7 +11,7 @@ package 算法类.Leetcode.链表;
  */
 public class reorder_list {
    //Definition for singly-linked list.
-   static class ListNode {
+   private static class ListNode {
        int val;
        ListNode next;
 
