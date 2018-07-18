@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.mediator;
 /**
  * 抽象同事类
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //抽象同事类

@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.responsibilitychain;
 /**
  * 向链上的具体处理者对象提交请求
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //链上的具体处理者对象提交请求

@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.state;
 /**
  * Context类，维护一个ConcreteState子类的实例，这个实例定义当前的状态
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //Context类，维护一个ConcreteState子类的实例，这个实例定义当前的状态

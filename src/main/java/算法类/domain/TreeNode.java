@@ -1,8 +1,6 @@
 package 算法类.domain;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class TreeNode<T> {
 	public T val;
@@ -149,7 +147,7 @@ public class TreeNode<T> {
         }
         
     }
-    //后序遍历非递归版
+    //后序遍历非递归版，比较复杂
     public void postorderIteratively(TreeNode<T> node, StringBuilder SB){
         //stack栈顶元素永远为cur的父节点
         //prevVisted用于区分是从左子树还是右子树返回的
@@ -175,6 +173,39 @@ public class TreeNode<T> {
             }
         }
     }
-    
-	
+
+
+    //以下的方法同样实现了非递归版前中后序遍历，只需要更改一段代码的位置即可实现
+	 private static class Command{
+        private String s;
+        private TreeNode node;
+        public Command(String s,TreeNode node){
+            this.node = node;
+            this.s = s;
+        }
+    }
+
+    public static List preorderTraversal(TreeNode root) {
+        List list = new ArrayList();
+        if (root == null) return list;
+
+        Stack<Command> stack = new Stack();
+        stack.push(new Command("go",root));
+        while (!stack.isEmpty()){
+            Command command = stack.pop();
+            if (command.s.equals("print")){
+                list.add(command.node.val);
+            }else {
+                assert command.s.equals("go");
+                //这里是后序遍历
+                if (command.node.right!=null)
+                    stack.push(new Command("go",command.node.right));
+                //这里是中序遍历
+                if (command.node.left!=null)
+                    stack.push(new Command("go",command.node.left));
+                stack.push(new Command("print",command.node));//这里是前序遍历
+            }
+        }
+        return list;
+    }
 }

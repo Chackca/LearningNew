@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.mediator;
 /**
  * 抽象中介者类
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //抽象中介者类

@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.adapter;
 /**
  * 需要适配的类
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //需要适配的类

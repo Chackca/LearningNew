@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.state;
 /**
  * 客户端：不断请求，不断更改状态
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //客户端：不断请求，不断更改状态

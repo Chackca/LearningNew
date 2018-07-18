@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.proxy;
 /**
  * 代理客户端
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class ProxyClient {

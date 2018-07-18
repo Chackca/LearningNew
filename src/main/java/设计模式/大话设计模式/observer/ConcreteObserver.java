@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.observer;
 /**
  * 具体观察者
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class ConcreteObserver extends Observer {

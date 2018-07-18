@@ -2,7 +2,7 @@ package 设计模式.大话设计模式.bridge;
 
 /**
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public abstract class Implementor {

@@ -11,7 +11,10 @@ public class MainTest {
 		
 		MyInterceptor interceptor = new MyInterceptor(aimObject);
 		//生成代理对象，此代理对象实现了aimInterface接口
-		AimInterface newProxyInstance = (AimInterface) Proxy.newProxyInstance(aimObject.getClass().getClassLoader(), aimObject.getClass().getInterfaces(), interceptor);
+		AimInterface newProxyInstance = (AimInterface) Proxy.newProxyInstance(
+				aimObject.getClass().getClassLoader(),
+				aimObject.getClass().getInterfaces(),
+				interceptor);
 		
 		newProxyInstance.aimMethod();
 	}

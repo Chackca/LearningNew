@@ -29,11 +29,11 @@ public class MyInterceptor implements MethodInterceptor{
 	@Override
 	public Object intercept(Object arg0, Method method, Object[] args, MethodProxy arg3) throws Throwable {
 		
-		System.out.println("aaaaa");//切面方法a();  
+		System.out.println("切面方法a()");//切面方法a();
 	    
 	    method.invoke(this.obj, args);//调用目标类的目标方法  
 	        
-	    System.out.println("bbbbb");//切面方法f();  
+	    System.out.println("切面方法f()");//切面方法f();
 	   
 		return null;
 	}

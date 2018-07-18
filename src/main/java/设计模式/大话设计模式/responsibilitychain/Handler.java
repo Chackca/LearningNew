@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.responsibilitychain;
 /**
  * 处理请求的接口
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //处理请求的接口

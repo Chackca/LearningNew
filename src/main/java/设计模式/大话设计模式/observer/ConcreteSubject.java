@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.observer;
 /**
  * 具体主题或通知者
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class ConcreteSubject extends Subject {

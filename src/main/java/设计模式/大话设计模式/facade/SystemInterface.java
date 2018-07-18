@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.facade;
 /**
  * “系统”接口，只是标记接口，暂无任何意义
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //“系统”接口，只是标记接口，暂无任何意义

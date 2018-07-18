@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.state;
 /**
  * 抽象状态类
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //抽象状态类

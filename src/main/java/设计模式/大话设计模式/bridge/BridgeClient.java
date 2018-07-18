@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.bridge;
 /**
  * 客户端
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class BridgeClient {

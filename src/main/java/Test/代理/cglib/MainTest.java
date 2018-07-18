@@ -11,9 +11,8 @@ public class MainTest {
 		//创建一个拦截器
 		MyInterceptor myInterceptor = new MyInterceptor(object);
 		
-		AimObject Proxy = (AimObject) myInterceptor.createProxy();
+		AimObject Proxy = (AimObject) myInterceptor.createProxy();//生成的是代理类的子类
 		
 		Proxy.aimMethod();
-		
 	}
 }

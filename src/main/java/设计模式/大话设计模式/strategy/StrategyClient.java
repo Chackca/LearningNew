@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.strategy;
 /**
  * 客户端使用策略
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class StrategyClient {

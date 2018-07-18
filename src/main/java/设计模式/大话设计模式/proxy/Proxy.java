@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.proxy;
 /**
  * 代理类
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class Proxy implements Subject {

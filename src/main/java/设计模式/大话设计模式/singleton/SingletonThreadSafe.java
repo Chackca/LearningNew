@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.singleton;
 /**
  * 线程安全的写法，单例模式最优写法
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class SingletonThreadSafe {

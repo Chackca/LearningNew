@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Util for String
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class StringUtil {

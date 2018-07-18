@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.observer;
 /**
  * 观察者模式客户端代码
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 public class ObserverClient {

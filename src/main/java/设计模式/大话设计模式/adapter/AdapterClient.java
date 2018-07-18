@@ -3,7 +3,7 @@ package 设计模式.大话设计模式.adapter;
 /**
  * 适配器客户端
  * 
- * @author liu yuning
+ * @author Chackca
  *
  */
 //适配器客户端
