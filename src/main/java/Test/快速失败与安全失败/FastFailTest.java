@@ -1,6 +1,7 @@
 package Test.快速失败与安全失败;
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,8 +21,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class FastFailTest {
 
-    //private static List<String> list = new ArrayList<String>();
-    private static List<String> list = new CopyOnWriteArrayList<String>();
+    private static List<String> list = new ArrayList<String>();
+    //private static List<String> list = new CopyOnWriteArrayList<String>();
     public static void main(String[] args) {
     
         // 同时启动两个线程对list进行操作！
@@ -30,8 +31,6 @@ public class FastFailTest {
     }
 
     private static void printAll() {
-        
-
         String value = null;
         Iterator iter = list.iterator();
         while(iter.hasNext()) {
@@ -48,7 +47,7 @@ public class FastFailTest {
             int i = 0;
             while (i<6) {
                 list.add(String.valueOf(i));
-                System.out.print("线程one");
+                System.out.print("线程one：");
                 printAll();
                 System.out.println();
                 i++;
@@ -64,7 +63,7 @@ public class FastFailTest {
             int i = 10;
             while (i<16) {
                 list.add(String.valueOf(i));
-                System.out.print("线程two");
+                System.out.print("线程two：");
                 //System.out.print("线程two");
                 printAll();
                 System.out.println();

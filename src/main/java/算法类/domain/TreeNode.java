@@ -61,7 +61,7 @@ public class TreeNode<T> {
   	}
     
     
-    /*
+    /**
      * 递归前序遍历
      */
     public void preOrder(TreeNode<T> node, StringBuilder SB){
@@ -78,7 +78,7 @@ public class TreeNode<T> {
         }
     }
     
-    /*
+    /**
      * 递归中序遍历
      */
     public void midOrder(TreeNode<T> node, StringBuilder SB)
@@ -107,10 +107,13 @@ public class TreeNode<T> {
             SB.append(",");
         }
     }
-    
-    
-    
-    //前序遍历非递归版
+
+
+    /**
+     * //前序遍历非递归版
+     * @param node
+     * @param SB
+     */
     public void preorderIteratively(TreeNode<T> node, StringBuilder SB){
     	 if(node==null)
              return;
@@ -129,8 +132,12 @@ public class TreeNode<T> {
         }
         
     }
-    
-    //中序遍历非递归版
+
+    /**
+     * 中序遍历非递归版
+     * @param node
+     * @param SB
+     */
     public void inorderIteratively(TreeNode<T> node, StringBuilder SB){
         //stack栈顶元素永远为cur的父节点
         Stack<TreeNode<T>> stack = new Stack();
@@ -147,7 +154,9 @@ public class TreeNode<T> {
         }
         
     }
-    //后序遍历非递归版，比较复杂
+    /**
+     *  后序遍历非递归版，比较复杂
+     */
     public void postorderIteratively(TreeNode<T> node, StringBuilder SB){
         //stack栈顶元素永远为cur的父节点
         //prevVisted用于区分是从左子树还是右子树返回的
@@ -185,9 +194,14 @@ public class TreeNode<T> {
         }
     }
 
-    public static List preorderTraversal(TreeNode root) {
+    /**
+     * 此种方法可以很方便地更换前中后序
+     * @param root
+     * @return
+     */
+    public static String preorderTraversal(TreeNode root) {
+        if (root == null) return null;
         List list = new ArrayList();
-        if (root == null) return list;
 
         Stack<Command> stack = new Stack();
         stack.push(new Command("go",root));
@@ -206,6 +220,99 @@ public class TreeNode<T> {
                 stack.push(new Command("print",command.node));//这里是前序遍历
             }
         }
-        return list;
+        return list.toString();
+    }
+
+
+    public static void main(String[] args){
+        //            1
+        //          /   \
+        //         2     3
+        //       /  \   / \
+        //      4    5 6   7
+        TreeNode<Integer> root = new TreeNode<Integer>(1);
+        root.left = new TreeNode<Integer>(2);
+        root.right = new TreeNode<Integer>(3);
+        root.left.left = new TreeNode<Integer>(4);
+        root.left.right = new TreeNode<Integer>(5);
+        root.right.left = new TreeNode<Integer>(6);
+        root.right.right = new TreeNode<Integer>(7);
+
+        ZhiPrint(root);
+        /*System.out.println(root.toFrontString());
+        //测试打印中序遍历
+        System.out.println(root.toMidString());
+        //测试打印后序遍历
+        System.out.println(root.toBackString());*/
+
+    }
+
+
+    /**
+     * 从底到上的层序遍历
+     * @param node
+     */
+    public static void traçageReverse(TreeNode node){
+        if (node == null)
+            return;
+        Queue<TreeNode> queue = new LinkedList();
+        queue.offer(node);
+        ArrayList<ArrayList<Integer>> list = new ArrayList();
+        int index = 0;
+        while (!queue.isEmpty()){
+            list.add(index,new ArrayList());
+            ArrayList innerList = list.get(index++);
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                 TreeNode cur = queue.poll();
+                 innerList.add(cur.val);
+                 if (cur.left!=null){
+                     queue.offer(cur.left);
+                 }
+                 if (cur.right!=null){
+                     queue.offer(cur.right);
+                 }
+            }
+        }
+
+        for (int i = list.size()-1; i >= 0 ; i--) {
+             ArrayList innerList = list.get(i);
+            for (int j = 0; j < innerList.size(); j++) {
+                System.out.print(innerList.get(j));
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * 按之字形打印二叉树
+     * @param root
+     */
+    public static void ZhiPrint(TreeNode root){
+        if(root == null)return;
+        //用于保存  左右  子节点
+        Stack<TreeNode<Integer>> stack1 = new Stack();
+        //用户保存  右左  子节点
+        Stack<TreeNode<Integer>> stack2 = new Stack();
+
+        TreeNode<Integer> temp ;
+        stack2.push(root);
+
+        while(!stack1.isEmpty()||!stack2.isEmpty()){
+            while(!stack1.isEmpty()){
+                temp = stack1.pop();
+                System.out.print(temp.val);
+                if(temp.right!=null)stack2.push(temp.right);
+                if(temp.left!=null)stack2.push(temp.left);
+            }
+            System.out.println();
+            while(!stack2.isEmpty()){
+                temp = stack2.pop();
+                System.out.print(temp.val);
+                if(temp.left!=null)stack1.push(temp.left);
+                if(temp.right!=null)stack1.push(temp.right);
+            }
+            System.out.println();
+        }
     }
 }

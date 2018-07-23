@@ -1,7 +1,9 @@
 package 算法类.排序算法;
 
-import 算法类.SortTestUtil;
+import 算法类.domain.SortTestUtil;
 
+//建立堆时首先需要考虑的位置是n/2-1，
+//调整堆时要考虑的子元素是2i+1
 public class 堆排序 implements Sort {
 
 	@Override
@@ -23,13 +25,11 @@ public class 堆排序 implements Sort {
 		//data.length/2-1定位到倒数第一个非叶子结点
 		for (int i = data.length / 2 - 1; i >= 0; i--) {
 			adjustHeap(data, i, data.length);
-			//adjustMinHeap(data,i,data.length);
 		}
 		//2.交换堆顶元素和末尾元素并重建堆
 		for (int j = data.length - 1; j > 0; j--) {
 			SortTestUtil.swap(data, 0, j);
 			adjustHeap(data, 0, j);
-			//adjustMinHeap(data,j,data.length);
 		}
 	}
 
@@ -90,7 +90,7 @@ public class 堆排序 implements Sort {
 	//堆排序测试
 
 	public static void main(String[] args) {
-		int[] data = {5, 4, 3, 1, 5, 6, 4, 5, 2, 6, 10, 7, 12};
+		int[] data = SortTestUtil.generateRandomArray(20,0,40);
 		System.out.println("数组堆排序：\t");
 		heapSort(data);
 		System.out.print("采用最大堆实现");

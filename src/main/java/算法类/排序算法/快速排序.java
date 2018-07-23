@@ -1,6 +1,6 @@
 package 算法类.排序算法;
 import org.junit.*;
-import 算法类.SortTestUtil;
+import 算法类.domain.SortTestUtil;
 
 public class 快速排序  implements Sort {
 
@@ -78,7 +78,7 @@ public class 快速排序  implements Sort {
 	@Test
 	public void testQuickSort(){
         int[] data = {5,4,3,1,2,6,10,7};
-        quickSort(data,0,data.length-1);
+		quickSort(data,0,data.length-1);
         System.out.print("数组快速排序：\t");
         for(int item: data){
             System.out.print(item);
@@ -123,4 +123,5 @@ public class 快速排序  implements Sort {
 		SortTestUtil.swap(data,small,end);
 		return 0;
 	}
+
 }

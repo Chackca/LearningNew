@@ -1,6 +1,7 @@
 package 算法类.其他题目;
 
-public class 扩展1判断是否为质数 {
+//质数，素数
+public class CVTE判断是否为质数 {
 
     public static boolean isPrime(int number){
         if (number<2) return false;

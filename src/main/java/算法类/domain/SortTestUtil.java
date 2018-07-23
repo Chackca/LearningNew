@@ -1,4 +1,4 @@
-package 算法类;
+package 算法类.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ public class SortTestUtil {
      * @param min
      * @param max
      */
-    public static int[] generateRandomArrayWithoutRepeatNumber(int n, int min, int max) {
+    public static int[] generateRandomArrayWithoutRepeat(int n, int min, int max) {
         if (n > (max - min + 1) || max < min)
             System.err.println("SortTestUtil：generateRandomArrayWithoutRepeatNumber您的输入参数有错");
         HashSet set = new HashSet();
@@ -83,8 +83,8 @@ public class SortTestUtil {
      * @param min
      * @param max
      */
-    public static int[] generateRandomSortArrayWithoutRepeatNumber(int n, int min, int max) {
-        int[] arr = generateRandomArrayWithoutRepeatNumber(n,min,max);
+    public static int[] generateRandomSortArrayWithoutRepeat(int n, int min, int max) {
+        int[] arr = generateRandomArrayWithoutRepeat(n,min,max);
         Arrays.sort(arr);
         if (n<50)
             System.out.println("原始生成排序后的数组为"+Arrays.toString(arr));

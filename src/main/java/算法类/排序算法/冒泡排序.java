@@ -9,8 +9,7 @@ import java.lang.reflect.Method;
 public class 冒泡排序 implements Sort {
     @Override
     public void executeSort(int[] data) {
-        bubbleSort(data);
-
+        bubbleSortUpdate(data);
     }
 
     /*
@@ -75,6 +74,4 @@ public class 冒泡排序 implements Sort {
         }
         System.out.println();
     }
-
-
 }

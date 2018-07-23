@@ -13,34 +13,31 @@ public class 基数排序  implements Sort {
 		radixSort(data);
 	}
 
-    //若有要求不能修改原数组则按下面的方式，否则output数组可以不需要
-	private static void countSort(int[] data, int exp) {
-	    final int capacity = 10;
-
-		ArrayList<LinkedList<Integer>> buckets = new ArrayList(capacity);
-
-	    for (int i = 0; i < capacity; i++) {
-	    	buckets.add(i,new LinkedList());
-		}
-        //offer.poll按照先进先出的方式
-	    // 将数据存储在buckets[]中
-        for (int i = 0; i < data.length; i++){
-        	//int temp = (a[i]/exp)%10;
-            buckets.get((data[i]/exp)%10).offer(data[i]);
+    /*
+     * 基数排序
+     * a -- 数组
+     */
+    public static void radixSort(int[] a) {
+        if (a == null){
+            return;
         }
-        int temp = 0;
-        for (int j = 0; j < 10; j++) {
-        	while (buckets.get(j).peek()!=null) {
-        		data[temp++]=(int) buckets.get(j).poll();
-    		}
-		}
+        int exp;    // 指数。当对数组按个位进行排序时，exp=1；按十位进行排序时，exp=10；...
+        int max = getMax(a);    // 数组a中的最大值
 
-        //buckets = null;
+        final int capacity = 10;
 
-	}
+        ArrayList<LinkedList<Integer>> buckets = new ArrayList(capacity);
 
-	
-	/*
+        for (int i = 0; i < capacity; i++) {
+            buckets.add(i,new LinkedList());
+        }
+
+        // 从个位开始，对数组a按"指数"进行排序
+        for (exp = 1; max/exp > 0; exp *= 10)
+            countSort(a, exp,buckets);
+    }
+
+    /*
      * 获取数组a中最大值
      */
     private static int getMax(int[] a) {
@@ -52,20 +49,23 @@ public class 基数排序  implements Sort {
         return max;
     }
 
-    /*
-     * 基数排序
-     * a -- 数组
-     */
-    public static void radixSort(int[] a) {
-        if (a == null){
-            return;
+    //若有要求不能修改原数组则按下面的方式，否则output数组可以不需要
+	private static void countSort(int[] data, int exp,ArrayList<LinkedList<Integer>> buckets) {
+
+        //offer.poll按照先进先出的方式
+	    // 将数据存储在buckets[]中
+        for (int i = 0; i < data.length; i++){
+        	//int temp = (a[i]/exp)%10;
+            buckets.get((data[i]/exp)%10).offer(data[i]);
         }
-        int exp;    // 指数。当对数组按个位进行排序时，exp=1；按十位进行排序时，exp=10；...
-        int max = getMax(a);    // 数组a中的最大值
-        // 从个位开始，对数组a按"指数"进行排序
-        for (exp = 1; max/exp > 0; exp *= 10)
-            countSort(a, exp);
-    }
+        int temp = 0;
+        for (int j = 0; j < 10; j++) {
+        	while (buckets.get(j).peek()!=null) {
+        		data[temp++]= buckets.get(j).poll();
+    		}
+		}
+	}
+
 
     @Test
     public void testRadixSort() {

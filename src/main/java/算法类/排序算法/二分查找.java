@@ -57,13 +57,10 @@ public class 二分查找 {
         int position = recursionBinarySearch(arr,key,0,arr.length - 1);
 
         //int position = commonBinarySearch(arr, key);
-
         if(position == -1){
             System.out.println("查找的是"+key+",序列中没有该数！");
         }else{
             System.out.println("查找的是"+key+",找到位置为："+position);
         }
     }
-
-
 }

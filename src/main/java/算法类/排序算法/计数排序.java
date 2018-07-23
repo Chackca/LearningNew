@@ -1,6 +1,7 @@
 package 算法类.排序算法;
 
 import org.junit.*;
+import 算法类.domain.SortTestUtil;
 
 public class 计数排序 implements Sort {
 
@@ -40,8 +41,8 @@ public class 计数排序 implements Sort {
 	}
 	//计数排序测试
 	@Test
-	private void countSortTest(){
-        int[] data = {5,4,3,1,2,6,10,7,7,4,12};
+	public void countSortTest(){
+        int[] data = SortTestUtil.generateRandomArray(10,0,20);
         System.out.println("数组计数排序：\t");
         CountSort(data);
         

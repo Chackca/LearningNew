@@ -1,4 +1,4 @@
-package 算法类.Leetcode.栈;
+package 算法类.Leetcode.栈与队列;
 
 /**
  * 给定一个Unix系统下的路径，简化这个路径

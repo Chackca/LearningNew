@@ -1,6 +1,7 @@
 package 算法类.排序算法;
 
 import org.junit.Test;
+import 算法类.domain.SortTestUtil;
 
 import java.util.Arrays;
 
@@ -74,13 +75,9 @@ public class 归并排序 implements Sort {
 
     @Test
     public void testMergerSort() {
-        int[] data = {9,3,7,6,5,4,2,8,1};
+        int[] data = SortTestUtil.generateRandomArray(20,0,10);
         Merge(data);
         System.out.println(Arrays.toString(data));
     }
-
-
-
-
 
 }

@@ -29,7 +29,7 @@ package 算法类.其他题目;
 如此，我们就从row[0]开始，每次找到她的夫妻，放在她的边上就好。
 当然可以记录位置来变得O(N)，但是题目中N <= 60，那就O(N^2)好了。
  */
-public class 扩展2CVTE新郎新娘坐凳子 {
+public class CVTE新郎新娘坐凳子 {
 
     private static int minSwapsCouples(int[] data) {
         if (data == null || data.length < 2 || data.length%2!=0) return -1;

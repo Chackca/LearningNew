@@ -11,7 +11,7 @@ import java.util.Queue;
 public class 树的最小深度 {
 
      //Definition for binary tree
-     class TreeNode {
+     private class TreeNode {
          int val;
          TreeNode left;
          TreeNode right;
