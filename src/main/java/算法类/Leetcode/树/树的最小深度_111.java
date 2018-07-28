@@ -8,7 +8,7 @@ import java.util.Queue;
  * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
  * 给定一个二叉树，找到它的最小深度。最小深度是沿着从根节点到最近的叶节点的最短路径的节点数。
  */
-public class 树的最小深度 {
+public class 树的最小深度_111 {
 
      //Definition for binary tree
      private class TreeNode {

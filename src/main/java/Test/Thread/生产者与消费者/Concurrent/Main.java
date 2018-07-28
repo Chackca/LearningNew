@@ -1,7 +1,6 @@
-package Test.生产者与消费者.Concurrent;
+package Test.Thread.生产者与消费者.Concurrent;
 
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
     public static void main(String[] args) {

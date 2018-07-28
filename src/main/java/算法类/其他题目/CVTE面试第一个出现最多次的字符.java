@@ -10,7 +10,7 @@ public class CVTE面试第一个出现最多次的字符 {
     private static char FirstAppearMost(String str) {
         if (str == null) return ' ';
         //注意：LinkedHashMap没有获取Linked插入顺序的方法，只能通过iterator获取
-        Map<Character,Integer> linkedHashMap = new LinkedHashMap();
+        LinkedHashMap<Character,Integer> linkedHashMap = new LinkedHashMap();
         for (int i = 0 ; i < str.length() ; i++){
             Character character = str.charAt(i);
             if (linkedHashMap.containsKey(character)){

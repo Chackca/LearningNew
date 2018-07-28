@@ -1,4 +1,4 @@
-package Test.生产者与消费者.WaitNotify;
+package Test.Thread.生产者与消费者.WaitNotify;
 
 import java.util.ArrayList;
 

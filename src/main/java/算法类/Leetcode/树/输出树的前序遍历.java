@@ -21,7 +21,7 @@ public class 输出树的前序遍历 {
     */
 
     //Definition for binary tree
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
