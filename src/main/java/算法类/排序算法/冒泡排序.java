@@ -33,7 +33,6 @@ public class 冒泡排序 implements Sort {
      * 优化版的冒泡排序
      */
     public static void bubbleSortUpdate(int[] data){
-
         if(data == null) return;
         //记录最后一次交换的位置
         int lastExchangeIndex =0; //解决原数组中后部分都为有序情况下的比较浪费

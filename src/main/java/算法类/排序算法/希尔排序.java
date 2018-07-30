@@ -9,7 +9,8 @@ public class 希尔排序 implements Sort {
         shellSort(data);
     }
 
-    /*
+    /**
+     * 希尔排序是插入排序的升级版
      * 希尔排序  http://www.cnblogs.com/skywang12345/p/3597597.html
      */
     //数组希尔排序(插入排序缩小增量)，时间o(n^1.3)，空间o(1)，不稳定
@@ -17,9 +18,12 @@ public class 希尔排序 implements Sort {
     public static void shellSort(int[] data){
         if(data==null || data.length<=1)
             return;
-        //数组长12 d=6  d=3
+        //第一趟表示，数据分为gap组，每组2个元素
+        //第二趟表示，数据分为gap/2组，每组4个元素
+        //...
+        //直到gap=1，只有一组，组内元素都完成了排序
         for(int gap=data.length/2; gap>0; gap=gap/2){ //gap为步长，每次减为原来的一半
-            //i=6 7   /  3 4 5
+            //每次遍历从第二组的第一个元素开始，依次对后面的元素进行插入排序
             for(int i=gap;i<data.length;i++){
                 int cur = i;
                 int curValue = data[i];

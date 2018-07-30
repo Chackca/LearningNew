@@ -9,8 +9,10 @@ public class 选择排序 implements Sort {
         selectionSort(data);
     }
 
-    /*
+    /**
      * 选择排序
+     * 从0开始遍历第一遍，记录下最小的，遍历结束后将其放在数组0位置
+     * 从1开始遍历第二遍，记录下最小的，遍历结束后将其放在数组1位置
      */
     public static void selectionSort(int[] data) {
         if (data == null) return;
