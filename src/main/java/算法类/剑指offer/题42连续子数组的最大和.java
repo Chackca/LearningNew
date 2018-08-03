@@ -20,7 +20,6 @@ package 算法类.剑指offer;
  */
 public class 题42连续子数组的最大和 {
 	
-	
 	private static int findGreatestSumOfSumArrays(int[] data) {
 		int maxValue = 0;
 		int curValue = 0;

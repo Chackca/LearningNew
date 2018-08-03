@@ -33,10 +33,36 @@ public class CVTE面试第一个出现最多次的字符 {
         return result;
     }
 
-    public static void main(String[] args) {
-        String str = new String("abcdefgfa");
+    public static void main(String[] args) {//abcdefgfa
+        String str = new String("cfcbddffaaeceec");
         System.out.println(FirstAppearMost(str));
+
+        String str1 = new String("cfcbddffaaeceec");
+        System.out.println(getFirstChar(str1));
     }
 
-
+    /**
+     * @param s
+     * @return
+     */
+    public static char getFirstChar(String s){
+        int []arr=new int[256];
+        int[] firstIndex=new int[1000];
+        int max=0;
+        char res=s.charAt(0);
+        char[] charArray = s.toCharArray();
+        for(int i=0;i<charArray.length;i++){
+            int index=(int)charArray[i];
+            arr[index]++;
+            firstIndex[arr[index]]=firstIndex[arr[index]]==0?i:Math.min(firstIndex[arr[index]], i);
+            if(arr[index]>max){
+                max=arr[index];
+                res=charArray[i];
+            }
+            if(arr[index]==max){
+                res=s.charAt(firstIndex[arr[index]]);
+            }
+        }
+        return res;
+    }
 }

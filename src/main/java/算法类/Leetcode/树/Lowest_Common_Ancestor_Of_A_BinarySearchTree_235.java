@@ -32,7 +32,6 @@ public class Lowest_Common_Ancestor_Of_A_BinarySearchTree_235 {
                 return lowestCommonAncestor(root.left,p,q);
             if (p.val>root.val&&q.val>root.val)
                 return lowestCommonAncestor(root.right,p,q);
-
             return root;
         }
     }

@@ -69,7 +69,7 @@ public class 快速排序  implements Sort {
 			if (end>start&&data[start]>target)
 				SortTestUtil.swap(data, start, end);
 		}
-		//当执行到这里，start=end
+		//当执行到这里，start==end
 		//data[start]=target;//因为上面已经用swap交换了，所以不需要此步骤
 		//System.out.println(start);
 		return start;

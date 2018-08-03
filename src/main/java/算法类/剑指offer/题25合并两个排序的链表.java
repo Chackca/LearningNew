@@ -20,8 +20,6 @@ public class 题25合并两个排序的链表 {
 			mergeListNode = head2;
 			mergeListNode.next = Merger(head1,head2.next);
 		}
-		
-		
 		return mergeListNode;
 	}
 	

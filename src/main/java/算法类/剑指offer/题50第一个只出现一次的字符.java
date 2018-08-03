@@ -22,7 +22,7 @@ public class 题50第一个只出现一次的字符 {
 	
 	public static void main(String[] args) {
 		//第一题
-		System.out.println(firstNotRepeatingChar("abaccbdeff"));
+		System.out.println(firstNotRepeatingChar("a021baccbdeff"));
 		
 		//第二题，字符流中第一个只出现一次的字符
 		String str = "google";

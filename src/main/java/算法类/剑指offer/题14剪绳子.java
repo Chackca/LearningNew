@@ -1,5 +1,5 @@
 package 算法类.剑指offer;
-/*
+/**
  *	题目要求：
 	给你一根长度为n的绳子，请把绳子剪成m段，
 	记每段绳子长度为k[0],k[1]...k[m-1],求k[0]k[1]...k[m-1]的最大值。
@@ -9,7 +9,7 @@ package 算法类.剑指offer;
  */
 public class 题14剪绳子 {
 	
-	/*
+	/**
 	 * 动态规划
 	 */
 	private static int maxCutting(int length) {
@@ -64,16 +64,12 @@ public class 题14剪绳子 {
 		return result;
 	}
 	
-	
-	
+
 	public static void main(String[] args){
         for(int i=2;i<15;i++){
             System.out.println("动态规划：长度为"+i+"的最大值->"+maxCutting(i));
 			System.out.println("贪婪算法：长度为"+i+"的最大值->"+maxCutting2(i));
         }
-
     }
-
-	
 }
 	

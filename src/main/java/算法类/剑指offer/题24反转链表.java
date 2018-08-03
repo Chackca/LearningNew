@@ -5,9 +5,19 @@ package 算法类.剑指offer;
 public class 题24反转链表 {
 
 	//采用迭代的做法
-	public static ListNode<Integer> ReverseList(ListNode<Integer> head) {
+	public static ListNode<Integer> reverseList(ListNode<Integer> head) {
+		ListNode pre = null;
+		ListNode cur = head;
+		while(cur != null){
+			ListNode next = cur.next;
+			cur.next = pre;
+			pre = cur;
+			cur = next;
+		}
+		return pre;
+
 		//若输入为空或者为一个节点的链表
-		if(head==null || head.next==null)
+		/*if(head==null || head.next==null)
             return head;
         ListNode<Integer> pre = null;
         ListNode<Integer> cur = head;
@@ -21,7 +31,7 @@ public class 题24反转链表 {
 			}else{
 				return pre;
 			}
-        }
+        }*/
 	}
 
 

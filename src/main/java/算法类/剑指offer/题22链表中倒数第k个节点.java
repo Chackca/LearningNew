@@ -1,5 +1,12 @@
 package 算法类.剑指offer;
 
+/**
+ * 题目要求：
+ * 求链表中倒数第k个节点。链表的尾节点定义为倒数第1个节点。
+ * 分析：定义两个指针，让第一个指针从头先走k步，
+ * 第二个指针指向链表头，然后两个指针同时向后走，
+ * 若第二个指针走到队尾，那么第一个指针所指的就是倒数第k个节点
+ */
 public class 题22链表中倒数第k个节点 {
 	
 	public static ListNode<Integer> FindKthToTail(ListNode<Integer> head,int k) {

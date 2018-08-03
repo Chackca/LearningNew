@@ -5,6 +5,11 @@ package 算法类.剑指offer;
 把一个数组最开始的若干个元素搬到末尾成为数组的旋转，
 如1,2,3,4,5=>3,4,5,1,2；0,1,1,1,1=>1,1,1,0,1；
 0,1,1,1,1=>1,0,1,1,1。求一个原本递增的数组旋转后的最小数字。
+思路：
+两个指针定位一前一后，若中间值大于等于第一个指针指向的值，将第一个指针指向中间值，
+若小于，将第二个指针指向中间值。直到两个指针的距离差为1停止。
+若为第二个数组，检测到头尾指针和中间指针的值都相同，则必须遍历整个数组找到小于这些数的
+
  */
 
 public class 题11旋转数组的最小数字 {
@@ -17,7 +22,8 @@ public class 题11旋转数组的最小数字 {
 		int middle = 0;
 		while (data[start]>=data[end]) {
 			if (end-start ==1) {
-				middle = end;break;
+				middle = end;
+				break;
 			}
 			
 			middle = (end + start)/2;
@@ -28,7 +34,6 @@ public class 题11旋转数组的最小数字 {
 			if (data[start]==data[middle] && data[end]==data[middle]) {
 				return MinInOrder(data,start,end);
 			}
-			
 			
 			if(data[middle]>=data[start])
 				start = middle;

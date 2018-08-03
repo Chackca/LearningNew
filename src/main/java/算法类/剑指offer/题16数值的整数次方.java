@@ -44,12 +44,12 @@ public class 题16数值的整数次方 {
 			return result;
 		}
 
-		/*
-		 * 递归的计算算法
-		 */
-		public static double powerWithUnsignedExponentRecursion(int base, int exponent){
-			if (exponent == 1) {
-				return base;
+	/*
+	 * 递归的计算算法
+	 */
+	public static double powerWithUnsignedExponentRecursion(int base, int exponent){
+		if (exponent == 1) {
+			return base;
 		}if (exponent ==0) {
 			return 1;
 		}
@@ -60,8 +60,6 @@ public class 题16数值的整数次方 {
 		}
 		return result;
 	}
-	
-	
 	
 	
 	public static void main(String[] args){

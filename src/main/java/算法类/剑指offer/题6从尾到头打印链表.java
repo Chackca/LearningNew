@@ -9,7 +9,6 @@ public class 题6从尾到头打印链表 {
 	 */
 	private static void printReversinglyRecursively(ListNode<Integer> head) {
 		if (head == null) return;
-		
 		printReversinglyRecursively(head.next);
 		System.out.print(head.val);
 	}

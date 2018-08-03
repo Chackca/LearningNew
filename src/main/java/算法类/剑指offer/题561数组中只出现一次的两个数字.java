@@ -1,5 +1,11 @@
 package 算法类.剑指offer;
 
+import java.util.Scanner;
+
+/**
+ * 一个整数数组里除了两个数字出现一次，其他数字都出现两次。请找出这两个数字。
+ * 要求时间复杂度为o(n)，空间复杂度为o(1)。
+ */
 public class 题561数组中只出现一次的两个数字 {
 	
 	public static int[] findNumsAppearOnce(int[] data){
@@ -13,7 +19,6 @@ public class 题561数组中只出现一次的两个数字 {
         if(indexOf1<0)
             return ret;
         for(int i=0;i<data.length;i++){
-        	//if((data[i]&indexOf1)==0)
         	temp = data[i];
         	if(((temp>>>indexOf1)&1)==0)
                 ret[0]^=data[i];
@@ -43,7 +48,5 @@ public class 题561数组中只出现一次的两个数字 {
         int[] result = findNumsAppearOnce(data); // 4,6
         System.out.println(result[0]);
         System.out.println(result[1]);
-
     }
-
 }
