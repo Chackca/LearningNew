@@ -71,9 +71,6 @@ public class 题14剪绳子 {
             System.out.println("动态规划：长度为"+i+"的最大值->"+maxCutting(i));
 			System.out.println("贪婪算法：长度为"+i+"的最大值->"+maxCutting2(i));
         }
-
     }
-
-	
 }
 	

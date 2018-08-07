@@ -11,7 +11,6 @@ import java.util.Stack;
  */
 public class 后缀表达式转中缀表达式并得出结果 {
 
-
     public static void main(String[] args) {
         String[] str1 = new String[5];
         str1[0]="2";

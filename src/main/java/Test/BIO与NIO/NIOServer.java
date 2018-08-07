@@ -12,7 +12,7 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-public class NIOTest {
+public class NIOServer {
 
     private static int port = 8000;
 
