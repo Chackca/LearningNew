@@ -18,9 +18,34 @@ import org.junit.*;
 //求背包能够装的最大价值
 public class 背包问题 {
 
-    //01、二维数组法
+
+    /**
+     * 背包问题总结
+     */
     @Test
-    public static void DoubleArray() {
+    public void SingleArray() {
+        int[] weight = {3,5,2,6,4}; //物品重量
+        int[] val = {4,4,3,5,3}; //物品价值
+        int length = weight.length;
+        int w = 12;
+        //如果是不需要装满，则初始化0，要装满则初始化Integer.MIN_VALUE
+        int[] dp = new int[w+1];//+1的目的使得i位置代表体积为i时
+
+        for (int i = 0; i < length; i++) {
+            //for(int j=weight[i];j<dp.length;j++)完全背包问题（无限使用）使用此循环
+            for (int j = dp.length-1; j >= weight[i] ; j--) {
+                dp[j] = Math.max(dp[j],dp[j-weight[i]]+val[i]);
+            }
+        }
+        System.out.println(dp[w]);
+    }
+
+
+
+
+    //P00、二维数组法
+    @Test
+    public void DoubleArray() {
     //public static void main(String[] args) {
         int[] weight = {3,5,2,6,4}; //物品重量
         int[] val = {4,4,3,5,3}; //物品价值
@@ -50,14 +75,15 @@ public class 背包问题 {
     }
 
 
-    //P02、一维数组法（无须装满）
+    //P01、一维数组法（无须装满）
     @Test
-    public static void SingleArray1() {
+    public void SingleArray1() {
     //public static void main(String[] args) {
         int[] weight = {3,5,2,6,4}; //物品重量
         int[] val = {4,4,3,5,3}; //物品价值
         int length = weight.length;
         int w = 12;
+
         //dp[i][j]：代表前i个物品装入体积为j的背包的最大价值
         int[] dp = new int[w+1];//+1的目的使得i位置代表体积为i时
 
@@ -86,9 +112,9 @@ public class 背包问题 {
      如果背包并非必须被装满，那么任何容量的背包都有一个合法解“什么都不装”，
      这个解的价值为0，所以初始时状态的值也就全部为0了。
      */
-    //P03、一维数组法（要装满）
+    //P02、一维数组法（要装满）
     @Test
-    public static void SingleArray2() {
+    public void SingleArray2() {
     //public static void main(String[] args) {
         int[] weight = {3,5,2,6,4}; //物品重量
         int[] val = {4,4,3,5,3}; //物品价值
@@ -118,8 +144,9 @@ public class 背包问题 {
      求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。
      **/
     //这个伪代码与P01的伪代码只有v的循环次序不同而已。
-    //P04、完全背包问题
-    public static void main(String[] args){
+    //P03、完全背包问题(每种物品无限使用)
+    @Test
+    public void infiniteThings(){
         int[] weight = {3,4,6,2,5};
         int[] val = {6,8,7,5,9};
         int length = weight.length;
@@ -133,5 +160,4 @@ public class 背包问题 {
         }
         System.out.println(dp[w]);
     }
-
 }
