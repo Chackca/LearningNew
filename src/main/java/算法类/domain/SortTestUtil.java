@@ -34,6 +34,7 @@ public class SortTestUtil {
             arr[i] = random.nextInt(max)%(max-min+1) + min;
         if (n<50)
             System.out.println("原始生成未排序的数组为"+Arrays.toString(arr));
+        else System.out.println("原始生成未排序的数组过长，不予输出");
         return arr;
     }
 
@@ -49,6 +50,7 @@ public class SortTestUtil {
         Arrays.sort(arr);
         if (n<50)
             System.out.println("原始生成排序后的数组为"+Arrays.toString(arr));
+        else System.out.println("原始生成排序后的数组过长，不予输出");
         return arr;
     }
 
@@ -74,6 +76,7 @@ public class SortTestUtil {
         }
         if (n<50)
             System.out.println("原始生成未排序的数组为"+Arrays.toString(arr));
+        else System.out.println("原始生成未排序的数组过长，不予输出");
         return arr;
     }
 
@@ -88,6 +91,7 @@ public class SortTestUtil {
         Arrays.sort(arr);
         if (n<50)
             System.out.println("原始生成排序后的数组为"+Arrays.toString(arr));
+        else System.out.println("原始生成排序后的数组过长，不予输出");
         return arr;
     }
 

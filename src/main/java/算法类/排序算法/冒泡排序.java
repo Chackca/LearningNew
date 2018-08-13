@@ -1,9 +1,7 @@
 package 算法类.排序算法;
 
-import org.junit.*;
+import org.junit.Test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 
 //https://mp.weixin.qq.com/s/wO11PDZSM5pQ0DfbQjKRQA
 public class 冒泡排序 implements Sort {

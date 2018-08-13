@@ -33,14 +33,14 @@ public class 二分查找 {
             return -1;
         }
         ///非递归要用while循环
-        while(low <= high){
+        while(low <= high){//注意这里有=号
             middle = (low + high) / 2;
             if(arr[middle] > key){
                 //比关键字大则关键字在左区域
-                high = middle - 1;
+                high = middle - 1;//注意这里要减1
             }else if(arr[middle] < key){
                 //比关键字小则关键字在右区域
-                low = middle + 1;
+                low = middle + 1;//注意这里要+1
             }else{
                 return middle;
             }
@@ -53,10 +53,10 @@ public class 二分查找 {
     public static void main(String[] args) {
 
         int[] arr = {1,3,5,7,9,11};
-        int key = 9;
-        int position = recursionBinarySearch(arr,key,0,arr.length - 1);
+        int key = 11;
+        //int position = recursionBinarySearch(arr,key,0,arr.length - 1);
 
-        //int position = commonBinarySearch(arr, key);
+        int position = commonBinarySearch(arr, key);
         if(position == -1){
             System.out.println("查找的是"+key+",序列中没有该数！");
         }else{

@@ -1,5 +1,5 @@
 package 算法类.排序算法;
-import org.junit.*;
+import org.junit.Test;
 import 算法类.domain.SortTestUtil;
 
 public class 快速排序  implements Sort {
