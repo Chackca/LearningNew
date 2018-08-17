@@ -2,6 +2,8 @@ package 算法类.排序算法;
 
 import 算法类.domain.SortTestUtil;
 
+import java.util.PriorityQueue;
+
 //建立堆时首先需要考虑的位置是n/2-1，
 //调整堆时要考虑的子元素是2i+1
 public class 堆排序 implements Sort {
@@ -107,5 +109,24 @@ public class 堆排序 implements Sort {
 			System.out.print('\t');
 		}
 		System.out.println();
+
+		/**
+		 * 以下为使用priorityQueue实现，默认为最小堆
+		 */
+		int[] data2 = SortTestUtil.generateRandomArray(100,0,100);
+		System.out.print("PriorityQueue最大堆实现");
+		PriorityQueue<Integer> queue = new PriorityQueue(20);
+		for (int i = 0; i < 20; i++) {
+			queue.add(data2[i]);
+		}
+		for (int i = 20; i < data2.length; i++) {
+			if (data2[i]>queue.peek()){
+				queue.poll();
+				queue.add(data2[i]);
+			}
+		}
+		for (int i = queue.size()-1; i >=0; i--) {
+			System.out.println(queue.poll());
+		}
 	}
 }

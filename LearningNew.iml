@@ -53,5 +53,6 @@
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.baidu:jprotobuf-protoparser:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.caucho:hessian:4.0.38" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.2" level="project" />
   </component>
 </module>

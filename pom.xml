@@ -177,6 +177,12 @@
             <version>4.0.38</version>
         </dependency>
         <!--测试Json序列化时添加的，具体包在Test.JSON序列化与克隆，结束-->
+        <!--2018.8.16测试MyBatis时添加的，缺失此配置会导致项目某处报错-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.2</version>
+        </dependency>
     </dependencies>
 
     <properties>

@@ -1,8 +1,10 @@
-package Test.Thread.生产者与消费者.WaitNotify;
+package Test.Thread.生产者与消费者;
 
 import java.util.ArrayList;
 
-public class Main {
+public class WaitNotify {
+
+
 
     public static void main(String[] args) {
         ArrayList list = new ArrayList();

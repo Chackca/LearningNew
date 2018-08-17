@@ -18,8 +18,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static sun.security.krb5.internal.crypto.Nonce.value;
-
 public class MyDispatcherServlet extends HttpServlet{
 
     //所有的配置信息都存入了properties中
@@ -227,6 +225,7 @@ public class MyDispatcherServlet extends HttpServlet{
                     }
                     Object instance = clazz.newInstance();
                     //找到这个类实现的所有接口，根据接口名字存储多个同样的实现类
+                    //注意，如果一个接口有多个实现类，在这里会出现key重复覆盖，需要额外处理
                     Class<?>[] interfaces = clazz.getInterfaces();
                     for (Class<?> classes : interfaces){
                         ioc.put(classes.getName(),instance);
@@ -344,11 +343,14 @@ public class MyDispatcherServlet extends HttpServlet{
         private void putParamIndexMapping(Method method){
             //提取方法中加了注解的参数
             Annotation[][] param = method.getParameterAnnotations(); //获取该方法的参数，包括不带注解的
+            //第一个维度对应参数列表里参数的数目
             for (int i = 0; i < param.length ; i++){
+                //第二个维度对应参数列表里对应的注解
                 for (Annotation a : param[i]){
                     if (a instanceof MyRequestParam){
                         String paramName = ((MyRequestParam) a).value();
                         if (!"".equals(paramName.trim())){
+                            //这个map存储的是索引,只有拥有注解的参数名才会被记录在这里
                             paramIndexMapping.put(paramName,i);
                         }
                     }
@@ -362,7 +364,7 @@ public class MyDispatcherServlet extends HttpServlet{
                 Class<?> type = paramTypes[i];
                 if (type == HttpServletRequest.class ||
                         type == HttpServletResponse.class){
-                    paramIndexMapping.put(type.getName(),i);
+                    paramIndexMapping.put(type.getName(),i);//这个map存储的是索引
                 }
             }
         }

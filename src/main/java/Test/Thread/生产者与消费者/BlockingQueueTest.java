@@ -1,8 +1,8 @@
-package Test.Thread.生产者与消费者.Concurrent;
+package Test.Thread.生产者与消费者;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class Main {
+public class BlockingQueueTest {
     public static void main(String[] args) {
         //LinkedBlockingQueue queue = new LinkedBlockingQueue<>();
         ArrayBlockingQueue queue = new ArrayBlockingQueue<>(2);
