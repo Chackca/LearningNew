@@ -22,6 +22,7 @@ public class 打印连续字符串 {
         }
     }
 
+
     public static TreeMap<Integer, String> getResult(String str, int n) {
         TreeMap<Integer, String> map = new TreeMap();
         int sum;

@@ -223,7 +223,6 @@ public class TreeNode<T> {
         return list.toString();
     }
 
-
     public static void main(String[] args){
         //            1
         //          /   \
@@ -244,7 +243,6 @@ public class TreeNode<T> {
         System.out.println(root.toMidString());
         //测试打印后序遍历
         System.out.println(root.toBackString());*/
-
     }
 
 
@@ -252,7 +250,7 @@ public class TreeNode<T> {
      * 从底到上的层序遍历
      * @param node
      */
-    public static void traçageReverse(TreeNode node){
+    public static void traverseReverse(TreeNode node){
         if (node == null)
             return;
         Queue<TreeNode> queue = new LinkedList();
@@ -282,6 +280,20 @@ public class TreeNode<T> {
             }
             System.out.println();
         }
+    }
+
+    /**
+     * 二叉树的最小深度
+     */
+    public int depth(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = depth(root.left);
+        int right = depth(root.right);
+        if (left==0||right==0){
+            return left+right+1;
+        }
+        return 1+Math.min(left,right);
     }
 
     /**
@@ -315,4 +327,71 @@ public class TreeNode<T> {
             System.out.println();
         }
     }
+
+    /**
+     * 二叉树的直径
+     */
+    private static int Diameter;
+    public static int diameterOfBinaryTree(TreeNode root) {
+        if (root == null)
+            return 0;
+        maxDepth(root);
+        return Diameter;
+    }
+    private static int maxDepth(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        Diameter = Math.max(Diameter,left+right);
+        return Math.max(left,right)+1;
+    }
+
+
+    /**
+     * 二叉树的镜像
+     */
+    public void mirrorRecursively(TreeNode<Integer> root) {
+        if(root == null)
+            return;
+        if(root.left == null && root.right == null){
+            return;
+        }
+        //执行交换左右子树
+        TreeNode<Integer> tempNode = root.left;
+        root.left = root.right;
+        root.right = tempNode;
+        if(root.left!=null){
+            mirrorRecursively(root.left);
+        }if(root.right!=null){
+            mirrorRecursively(root.right);
+        }
+    }
+
+    /**
+     * 判断是否为对称二叉树
+     */
+    //递归实现
+    public boolean isSymmetrical(TreeNode<Integer> root){
+        if(root==null)
+            return false;
+        if(root.left==null && root.right==null)
+            return true;
+        if(root.left==null || root.right==null)
+            return false;
+        return isSymmetrical(root.left,root.right);
+    }
+    public boolean isSymmetrical(TreeNode<Integer> root1, TreeNode<Integer> root2){
+        if(root1==null && root2==null)
+            return true;
+        if(root1==null || root2==null)
+            return false;
+        if(!root1.val.equals(root2.val))
+            return false;
+        return isSymmetrical(root1.left,root2.right) && isSymmetrical(root1.right,root2.left);
+    }
+
+
+
+
 }
