@@ -1,5 +1,9 @@
 package 算法类.剑指offer;
 
+/**
+ * 题目要求：
+ * 输入一个整数，求1~n这n个整数中1出现的次数。如输入12，则包含1的数字有1,10,11,12，一共出现了5次1，因此输入5。
+ */
 public class 题43一至n整数中1出现的次数 {
 	
 	private static int numberOf1Between1AndN(int num) {
@@ -56,9 +60,5 @@ public class 题43一至n整数中1出现的次数 {
         System.out.println(numberOf1Between1AndN2(121));
         System.out.println(numberOf1Between1AndN(789));
         System.out.println(numberOf1Between1AndN2(789));
-
     }
-
-	
-	
 }

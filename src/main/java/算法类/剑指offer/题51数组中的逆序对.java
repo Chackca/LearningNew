@@ -1,6 +1,6 @@
 package 算法类.剑指offer;
 	
-/*
+/**
  * 	题目要求：
 	如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
 	输入一个数组，求出这个数组中的逆序对总数。例如输入{7,5,6,4}，
@@ -90,7 +90,7 @@ public class 题51数组中的逆序对 {
                 temp[t++] = data[i++];
             }else {
                 temp[t++] = data[j++];
-                count += mid - i +1;
+                count += mid - i + 1;
             }
         }
         while(i<=mid){//将左边剩余元素填充进temp中

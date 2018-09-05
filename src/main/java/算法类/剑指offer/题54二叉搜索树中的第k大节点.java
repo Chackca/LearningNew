@@ -2,8 +2,19 @@ package 算法类.剑指offer;
 
 import java.util.ArrayList;
 
+/**
+ * 题目要求：
+ * 找出二叉搜索树的第k大节点。例如，在下图的树里，第3大节点的值为4，输入该树的根节点，3，则输出4。
+ *
+ *         5
+ *        / \
+ *       3   7
+ *     / \   /  \
+ *    2  4  6  8
+ * 解题思路：
+ * 二叉搜索树的中序遍历是有序的。可以引入一个计数器，每访问一个节点，计数器+1，当计数器等于k时，被访问节点就是该二叉搜索树的第k大节点。
+ */
 public class 题54二叉搜索树中的第k大节点 {
-	
 	
 	private static Integer kthNode(TreeNode<Integer> root, int i) {
 		if (root == null ||i<=0) {

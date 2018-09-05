@@ -40,16 +40,18 @@ public class Test {
      * @return
      */
     public int[] sort(int[] arr){
+        System.out.println("选择排序");
         for (int i = 0; i < arr.length; i++) {
-            int curMinIndex = i;
-            int curMin = arr[i];
+            int min = arr[i];
+            int index = i;
             for (int j = i+1; j < arr.length; j++) {
-                if (arr[j]<curMin) {
-                    curMinIndex = j;
-                    curMin = arr[j];
-                }
+                if (min > arr[j]){
+                    min = arr[j];
+                    index = j;
+                 }
             }
-            SortTestUtil.swap(arr,i,curMinIndex);
+            SortTestUtil.swap(arr,i,index);
+            //arr[i]=min;
         }
         return arr;
     }
@@ -60,15 +62,15 @@ public class Test {
      * @return
      */
     public int[] sort2(int[] arr){
+        System.out.println("插入排序");
         for (int i = 1; i < arr.length; i++) {
-            int curIndex = i;
             int curValue = arr[i];
-            while (i-1>=0 && arr[i-1]>curValue){
-                arr[i] = arr[i-1];
-                i--;
+            int curIndex = i;
+            while (curIndex-1>=0 && arr[curIndex-1] > curValue){
+                arr[curIndex] = arr[curIndex-1];
+                curIndex--;
             }
-           arr[i] = curValue;
-            i = curIndex;
+            arr[curIndex] = curValue;
         }
         return arr;
     }
@@ -83,9 +85,9 @@ public class Test {
         System.out.println("希尔排序");
         for (int gap = arr.length/2; gap > 0; gap=gap/2) {
             for (int i = gap; i < arr.length; i++) {
-                int curValue = arr[i];
                 int curIndex = i;
-                while (curIndex-gap>=0 && arr[curIndex-gap]>curValue){
+                int curValue = arr[i];
+                while (curIndex - gap >= 0 && arr[curIndex - gap] > curValue ){
                     arr[curIndex] = arr[curIndex-gap];
                     curIndex -= gap;
                 }
@@ -101,40 +103,39 @@ public class Test {
      * @return
      */
     public int[] sort4(int[] arr){
-        int l = 0;
-        int r = arr.length-1;
         System.out.println("快速排序");
-        sort(arr,l,r);
+        sort(arr,0,arr.length-1);
         return arr;
     }
 
-    private void sort(int[] arr, int l, int r) {
-        if (r<l)
+    private void sort(int[] arr, int left, int right) {
+        if (left>=right)
             return;
-        int partition = partition(arr,l,r);
-        sort(arr,l,partition-1);
-        sort(arr,partition+1,r);
+        int partition = partition(arr,left,right);
+        sort(arr,left,partition-1);
+        sort(arr,partition+1,right);
     }
 
-    private int partition(int[] arr, int l, int r) {
-        int t = arr[l];
-        while(l<r){
-            while (arr[r]>t){
-                r--;
+    private int partition(int[] arr, int left, int right) {
+        int target = arr[left];
+        while (left<right){
+            while (left<right && arr[right] > target){
+                right--;
             }
-            if (l<r && arr[r]<t){
-                arr[l] = arr[r];
+            if (left<right && arr[right] <= target){
+                SortTestUtil.swap(arr,left,right);
             }
-            while(l<r&&arr[l]<t){
-                l++;
+            while (left<right && arr[left] < target){
+                left++;
             }
-            if (l<r&&arr[l]>t){
-                arr[r] = arr[l];
+            if (left<right && arr[left] >= target){
+                SortTestUtil.swap(arr,left,right);
             }
         }
-        arr[l] = t;
-        return l;
+        return left;
     }
+
+
 
     /**
      * 归并排序
@@ -142,82 +143,85 @@ public class Test {
      * @return
      */
     public int[] sort5(int[] arr){
-        int l = 0;
-        int r = arr.length-1;
         System.out.println("归并排序");
         int[] temp = new int[arr.length];
-        merge(arr,l,r,temp);
+        merge(arr,0,arr.length-1,temp);
         return arr;
     }
 
-    private void merge(int[] arr, int l, int r,int[] temp) {
-        if (l>=r)
+    private void merge(int[] arr, int left, int right, int[] temp) {
+        if (left>=right)
             return;
-        int middle = l + (r-l)/2;
-        merge(arr,l,middle,temp);
-        merge(arr,middle+1,r,temp);
-        mergeTogether(arr,l,r,middle,temp);
+        int mid = left + (right - left)/2;
+        merge(arr,left,mid,temp);
+        merge(arr,mid+1,right,temp);
+        mergeSort(arr,left,right,mid,temp);
     }
 
-    private void mergeTogether(int[] arr, int l, int e, int middle,int[] temp) {
-        int start = l;
-        int r = middle+1;
+    private void mergeSort(int[] arr, int left, int right, int mid, int[] temp) {
+        if (left>right)
+            return;
+        int start = left;
+        int start2 = mid+1;
         int tempIndex = 0;
-        while (l<=middle && r<=e){
-            if (arr[l]<=arr[r])
-                temp[tempIndex++]=arr[l++];
-            else temp[tempIndex++] = arr[r++];
+        while (start <= mid && start2 <=right){
+            if (arr[start]<arr[start2]) {
+                temp[tempIndex++] = arr[start++];
+            } else {
+                temp[tempIndex++] = arr[start2++];
+            }
         }
-        while (l<=middle){
-            temp[tempIndex++]=arr[l++];
+        while (start <= mid) {
+            temp[tempIndex++] = arr[start++];
         }
-        while(r<=e){
-            temp[tempIndex++] = arr[r++];
+        while (start2 <=right)  {
+            temp[tempIndex++] = arr[start2++];
         }
 
-        for (int i = 0; i < tempIndex; i++) {
-            arr[i+start] = temp[i];
+        tempIndex=0;
+        for (int i = left; i <= right; i++) {
+            arr[i] = temp[tempIndex++];
         }
     }
 
 
     /**
-     * 桶排序
+     * 堆排序
      * @param arr
      * @return
      */
-    public int[] sort6(int[] arr){
-        System.out.println("桶排序");
-        for (int i = arr.length/2-1; i >= 0; i--) {
-            buildHeap(arr,i,arr.length);
+    public int[] sort6(int[] arr) {
+        System.out.println("堆排序");
+        for (int i = arr.length/2-1; i >=0 ; i--) {
+            heapSort(arr,i,arr.length -1);
         }
         for (int i = 0; i < arr.length; i++) {
             SortTestUtil.swap(arr,0,arr.length-i-1);
-            buildHeap(arr,0,arr.length-i-1);
+            heapSort(arr,0,arr.length -i-1);
         }
         return arr;
     }
-    private void buildHeap(int[] arr, int i, int length) {
-        int target = arr[i];
-        for (int j = 2*i+1; j < length;j = 2*j+1) {
-            if (j+1<length && arr[j+1]>arr[j]){
+
+    private void heapSort(int[] arr, int i, int length) {
+        int curIndex = i;
+        int curValue = arr[i];
+        for (int j = 2*i+1; j < length; j=j*2) {
+            if (j+1<length && arr[j+1]> arr[j]){
                 j++;
             }
-            if(arr[j]>target){
-                arr[i] = arr[j];
-                i = j;
-            }else{
-                break;
-            }
+            if (arr[j] > curValue){
+                arr[curIndex] = arr[j];
+                curIndex = j;
+            }else break;
         }
-        arr[i] = target;
+        arr[curIndex] = curValue;
     }
 
     @org.junit.Test
     public void Test() {
-        int[] arr = {1, 3, 5, 7, 9, 11};
+        int[] arr = {1,9,  3,  7, 5,11};
         int[] arr2 = SortTestUtil.generateRandomArray(50,0,100);
-        int[] res = sort7(arr2);
+        int[] res = sort6(arr2);
         for (int i = 0; i < res.length; i++) {
             System.out.print(res[i]);
             System.out.print(",");

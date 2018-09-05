@@ -1,8 +1,19 @@
 package 算法类.剑指offer;
 
+import java.util.Arrays;
+
+/**
+ * 题目要求：
+ * 输入一个字符串（只包含a~z的字符），求其最长不含重复字符的子字符串的长度。例如对于arabcacfr，
+ * 最长不含重复字符的子字符串为acfr，长度为4。
+ *
+ * 解题思路：
+ * 动态规划。用dp[]记录状态，dp[i]表示以下标为i的字符结尾不包含重复字符的最长子字符串长度。
+ * 初始化dp[0] = 1，求maxdp。每次可以根据dp的前一个状态推导出后一个状态，因此可以省略dp数组，
+ * 使用一个变量记录dp值，使用maxdp记录最大的dp值。用一个position数组存储每一个字符串最后一次出现的index
+
+ */
 public class 题48最长不含重复字符的子字符串 {
-	
-	
 	private static int longestSubstringWithoutDup(String string) {
 		//0.判断输入是否正确
 		if(string == null || string.trim().length()==0)
@@ -13,9 +24,7 @@ public class 题48最长不含重复字符的子字符串 {
 		int[] position = new int[26];
 		//int maxStrLeftIndex = 0;
 		//int maxStrRightIndex = 0;
-		for(int i=0;i<position.length;i++)
-			position[i] = -1;
-		
+		Arrays.fill(position,-1);
 		//2.遍历字符串，进行一系列判断
 		for(int i =0 ; i<string.length() ; i++){
 			//将当前遍历到的字符串的值存储到position数组中

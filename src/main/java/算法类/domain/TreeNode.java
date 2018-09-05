@@ -11,7 +11,11 @@ public class TreeNode<T> {
 		this.left = null;
 		this.right = null;
 	}
-	//默认为层序遍历
+
+    /**
+     * 默认输出为层序遍历
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder SB = new StringBuilder("层序遍历：[");
@@ -32,7 +36,9 @@ public class TreeNode<T> {
         return SB.toString();
     }
     
-    //返回前序遍历
+    /**
+        返回前序遍历
+     */
     public String toFrontString() {
     	StringBuilder SB = new StringBuilder("前序遍历：[");
     	preOrder(this,SB);//递归实现
@@ -41,7 +47,9 @@ public class TreeNode<T> {
     	SB.append("]");
 		return SB.toString();
     }
-    //返回中序遍历
+    /**
+     * 返回中序遍历
+     */
   	public String toMidString() {
   		StringBuilder SB = new StringBuilder("中序遍历：[");
       	midOrder(this,SB);//递归实现
@@ -50,7 +58,11 @@ public class TreeNode<T> {
       	SB.append("]");
   		return SB.toString();
   	}
-  	//返回后序遍历
+
+    /**
+     * 返回后序遍历
+     * @return
+     */
   	public String toBackString() {
   		StringBuilder SB = new StringBuilder("后序遍历：[");
       	posOrder(this,SB);//递归实现
@@ -65,47 +77,43 @@ public class TreeNode<T> {
      * 递归前序遍历
      */
     public void preOrder(TreeNode<T> node, StringBuilder SB){
-    	if (node != null)
-        {
-            //执行处理代表当前为中
-    		//前序这里执行处理（中左右）
-            SB.append(node.val);
-            SB.append(",");
-            preOrder(node.left,SB);
-            //中序在这里（左中右）
-            preOrder(node.right,SB);
-            //后序在这里（左右中）
-        }
+    	if (node == null)
+    	    return;
+        //执行处理代表当前为中
+        //前序这里执行处理（中左右）
+        SB.append(node.val);
+        SB.append(",");
+        preOrder(node.left,SB);
+        //中序在这里（左中右）
+        preOrder(node.right,SB);
+        //后序在这里（左右中）
+
     }
     
     /**
      * 递归中序遍历
      */
-    public void midOrder(TreeNode<T> node, StringBuilder SB)
-    {
-        if (node != null)
-        {	
-            midOrder(node.left,SB);
-            //在这里执行处理
-            SB.append(node.val);
-            SB.append(",");
-            midOrder(node.right,SB);
-        }
+    public void midOrder(TreeNode<T> node, StringBuilder SB) {
+        if (node == null)
+            return;
+        midOrder(node.left,SB);
+        //在这里执行处理
+        SB.append(node.val);
+        SB.append(",");
+        midOrder(node.right,SB);
     }
 
     /**
      * 递归后序遍历
      */
-    public void posOrder(TreeNode<T> node, StringBuilder SB)
-    {
-        if (node != null)
-        {
-            posOrder(node.left,SB);
-            posOrder(node.right,SB);
-            //在这里执行处理
-            SB.append(node.val);
-            SB.append(",");
-        }
+    public void posOrder(TreeNode<T> node, StringBuilder SB) {
+        if (node == null)
+            return;
+        posOrder(node.left,SB);
+        posOrder(node.right,SB);
+        //在这里执行处理
+        SB.append(node.val);
+        SB.append(",");
     }
 
 
@@ -154,6 +162,7 @@ public class TreeNode<T> {
         }
         
     }
+
     /**
      *  后序遍历非递归版，比较复杂
      */
@@ -184,8 +193,10 @@ public class TreeNode<T> {
     }
 
 
-    //以下的方法同样实现了非递归版前中后序遍历，只需要更改一段代码的位置即可实现
-	 private static class Command{
+    /**
+     * 以下的方法同样实现了非递归版前中后序遍历，只需要更改一段代码的位置即可实现
+     */
+    private static class Command{
         private String s;
         private TreeNode node;
         public Command(String s,TreeNode node){
@@ -223,6 +234,10 @@ public class TreeNode<T> {
         return list.toString();
     }
 
+    /**
+     * 测试用例
+     * @param args
+     */
     public static void main(String[] args){
         //            1
         //          /   \
@@ -285,19 +300,67 @@ public class TreeNode<T> {
     /**
      * 二叉树的最小深度
      */
-    public int depth(TreeNode root) {
+    public static int treeDepth(TreeNode root) {
         if (root == null)
             return 0;
-        int left = depth(root.left);
-        int right = depth(root.right);
+        int left = treeDepth(root.left);
+        int right = treeDepth(root.right);
         if (left==0||right==0){
             return left+right+1;
         }
         return 1+Math.min(left,right);
     }
 
+
+    /**
+     * 判断是否为平衡二叉树
+     */
+    /*
+     * 采用递归的方法，效率不高，节点会被重复计算
+     */
+    private static boolean isBalanced(TreeNode<Integer> root) {
+        if (root==null) {
+            return true;
+        }
+        int left = treeDepth(root.left);
+        int right = treeDepth(root.right);
+
+        if(left-right>1 ||left-right<-1){
+            return false;
+        }
+        return isBalanced(root.left)&&isBalanced(root.right);
+    }
+
+    /*
+     * 采用后序遍历的方法，每个节点只算一次
+     */
+    //用后序遍历，并记录每个节点的深度，从而可以通过一次遍历完成整棵树的判断
+    public static boolean isBalanced2(TreeNode<Integer> node){
+        if(node==null)
+            return true;
+        int depth[] = new int[1];
+        return isBalanced2Core(node,depth);
+    }
+
+    private static boolean isBalanced2Core(TreeNode<Integer> root, int[] depth) {
+        if (root==null) {
+            return true;
+        }
+        int left[] = new int[1];
+        int right[] = new int[1];
+
+        if (isBalanced2Core(root.left,left)&&isBalanced2Core(root.right,right)) {
+            if ((left[0]- right[0]<=1)||(left[0]- right[0]>=-1)) {
+                depth[0] = 1+ ((left[0]>right[0])?left[0]:right[0]) ;
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * 按之字形打印二叉树
+     * 两个栈
      * @param root
      */
     public static void ZhiPrint(TreeNode root){
@@ -330,6 +393,7 @@ public class TreeNode<T> {
 
     /**
      * 二叉树的直径
+     * 直径：从一个子节点到另外一个子节点的最长长度
      */
     private static int Diameter;
     public static int diameterOfBinaryTree(TreeNode root) {

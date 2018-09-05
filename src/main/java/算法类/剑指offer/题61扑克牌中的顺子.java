@@ -15,17 +15,12 @@ public class 题61扑克牌中的顺子 {
         }
        
 		//统计数组中0的数量
-        int numOfZero = 0;
-        while (table[0]!=0){
-        	table[0]--;
-        	numOfZero++;
-        }
-        
+        int numOfZero = table[0];
 		//统计排序后的数组中相邻数字之间的空缺总数
         int start = 1;
         while (table[start]==0)
             start++;//记录第一个出现非0数字的位置
-        
+
         int king = 0;
         for(int i=start;i<start+5;i++){
             if(i>13)
@@ -37,7 +32,6 @@ public class 题61扑克牌中的顺子 {
         if (king<=numOfZero) {
         	return true;
 		}
-		
 		return false;
 	}
 	

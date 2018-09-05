@@ -22,10 +22,6 @@ public class 题551二叉树的深度 {
 		return left>right?left+1:right+1;
 	}
 
-	
-	
-	
-	
 	public static void main(String[] args){
         TreeNode<Integer> root = new TreeNode(1);
         root.left = new TreeNode(2);

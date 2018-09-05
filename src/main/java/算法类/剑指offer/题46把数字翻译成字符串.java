@@ -1,5 +1,5 @@
 package 算法类.剑指offer;
-/*
+/**
  * 面试题46：把数字翻译成字符串
 
 	题目要求：
@@ -34,7 +34,6 @@ public class 题46把数字翻译成字符串 {
 		for (int i = length-2; i >= 0; i--) {
 			if (Integer.parseInt(number.charAt(i)+""+number.charAt(i+1))<26) g=1;
 			else g=0;
-			
 			int temp = f2;
 			f2 = f2 + f1*g;
 			f1 = temp;

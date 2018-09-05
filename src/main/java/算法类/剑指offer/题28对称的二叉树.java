@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class 题28对称的二叉树 {
+
     //递归实现
     public static boolean isSymmetrical(TreeNode<Integer> root){
         if(root==null)
@@ -23,7 +24,7 @@ public class 题28对称的二叉树 {
             return false;
         return isSymmetrical(root1.left,root2.right) && isSymmetrical(root1.right,root2.left);
     }
-    
+
     
     
     //迭代实现

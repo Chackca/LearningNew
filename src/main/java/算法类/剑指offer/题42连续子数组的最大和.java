@@ -41,6 +41,4 @@ public class 题42连续子数组的最大和 {
         int[] data = {1,-2,3,10,-4,7,2,-5};
         System.out.println(findGreatestSumOfSumArrays(data));
     }
-
-	
 }

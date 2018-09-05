@@ -7,21 +7,18 @@ public class 题63股票的最大利润 {
 			return -1;
 		}
 		
-		int min = data[0];
+		int min = data[0];//记录当前买入的价格
 		int maxDiff = data[1]-min;
 		
 		for (int i = 2; i < data.length; i++) {
-			if (data[i-1]<min) {
-				min = data[i-1];
+			if (data[i-1]<min) { //用于记录最低价
+				min = data[i-1];//买入的最低价
 			}
 			int currentDiff = data[i-1] - min;
 			if (currentDiff>maxDiff) {
 				maxDiff = currentDiff;
 			}
 		}
-		
-		
-		
 		return maxDiff;
 	}
 	

@@ -24,14 +24,14 @@ public class 题14剪绳子 {
 		products[3]=3;
 		//product[n]=product[i]*product[n-i];i<=n/2
 		int max = 0 ;
-		for (int i = 4; i <= length; i++) {
+		for (int i = 4; i <= length; i++) {//长度为i的绳子
 			max = 0;
 			//遍历products里面的值，找到两个乘积最大的
 			for (int j = 1; j <= i/2; j++) {
 				int product = products[j]*products[i-j];
 				if (product>max) max = product;
-				products[i] = max;
 			}
+			products[i] = max;
 		}
 		max = products[length];
 		

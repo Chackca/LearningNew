@@ -58,14 +58,13 @@ public class 题552平衡二叉树 {
         System.out.println(isBalanced(root));
         System.out.println(isBalanced2(root));
     }
-	
+
 	public static int treeDepth(TreeNode<Integer> root) {
 		if (root==null) {
 			return 0;
 		}
 		int left = treeDepth(root.left);
 		int right = treeDepth(root.right);
-		
 		return left>right?left+1:right+1;
 	}
 

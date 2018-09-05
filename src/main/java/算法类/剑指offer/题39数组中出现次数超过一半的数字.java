@@ -25,27 +25,31 @@ public class 题39数组中出现次数超过一半的数字 {
 	/*
 	 * 使用缓存值求的方式
 	 */
-	private static int  moreThanHalfNum2(int[] data) {
-		if(data==null || data.length==0)
-	        return 0;
-		int value = -1; //记录当前值
-		int count = 0; //记录当前值出现的次数	
-		for (int i = 0; i < data.length; i++) {
-			int now = data[i];	
-			if (count >= 1 && now == value) {
-				count ++;
-			}else if (count > 1 && now != value) {
-				count--;
-			}else if (count <= 1 && now != value) {
-				value = now;
-				count = 1;
+	public static int moreThanHalfNum2(int [] array) {
+		if(array == null || array.length == 0) return 0;
+		if (array.length == 1 ) return array[0];
+		int current = array[0];
+		int times = 1;
+		for(int i = 1 ; i < array.length ; i++){
+			if(current == array[i]){
+				times++;
+			}else if(times > 1){
+				times--;
+				if (i==array.length-1 && times==1)
+					return current;
+			}else{
+				current = array[i];
+				times = 1;
 			}
 		}
-		return value;
+		if (times == 1) return 0;
+		return current;
 	}
 
+
+
 	/*
-	 * 使用快拍的partition函数
+	 * 使用快排的partition函数
 	 */
 	private static int  moreThanHalfNum1(int[] data) {
 		if(data==null || data.length==0)
@@ -67,7 +71,6 @@ public class 题39数组中出现次数超过一半的数字 {
 		if (index==middleIndex) {
 			return data[middleIndex];
 		}
-		
 		return -1;
 	}
 	
@@ -101,9 +104,11 @@ public class 题39数组中出现次数超过一半的数字 {
 
 	public static void main(String[] args){
         int[] data = {1,2,3,2,2,2,5,4,2,4,4,4,4,4,4,4,4,4,4,4};
-        System.out.println(moreThanHalfNum2(data));
-        System.out.println(moreThanHalfNum1(data));
+		int[] data2 = {1,2,3,2,4,2,5,2,3};
+		//System.out.println(moreThanHalfNum2(data));
+		//System.out.println(moreThanHalfNum1(data));
+		System.out.println(moreThanHalfNum2(data2));
+        //System.out.println(moreThanHalfNum1(data2));
     }
-
 	
 }

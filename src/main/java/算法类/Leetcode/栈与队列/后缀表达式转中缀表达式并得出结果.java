@@ -34,7 +34,7 @@ public class 后缀表达式转中缀表达式并得出结果 {
         Stack<Integer> stack = new Stack();
         for (int i = 0 ; i<tokens.length;i++){
             try {
-                stack.push(Integer.parseInt(tokens[i]));
+                stack.push(Integer.parseInt(tokens[i]));//如果是数字直接进栈，否则.....
             }catch (Exception e){
                 exec(stack,tokens[i]);
             }
