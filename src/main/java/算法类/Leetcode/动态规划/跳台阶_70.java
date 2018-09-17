@@ -23,10 +23,9 @@ package 算法类.Leetcode.动态规划;
  * 2.  1 步 + 2 步
  * 3.  2 步 + 1 步
  */
-public class Climb_Stairs_70 {
+public class 跳台阶_70 { //Climb_Stairs
 
     public static int climbStairs(int n) {
-
         if(n <= 0)
             throw new IllegalArgumentException("n must be greater than zero");
 

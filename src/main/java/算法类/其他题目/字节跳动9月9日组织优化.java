@@ -1,42 +1,18 @@
-package 算法类.Leetcode.递归;
+package 算法类.其他题目;
 
-/**
- * Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
- * An island is surrounded by water and is formed by connecting adjacent lands
- * horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
- *
- * Example 1:
- *
- * Input:
- * 11110
- * 11010
- * 11000
- * 00000
- *
- * Output: 1
- * Example 2:
- *
- * Input:
- * 11000
- * 11000
- * 00100
- * 00011
- *
- * Output: 3
- */
-public class Number_Of_Islands_200 {
+import java.util.Scanner;
 
+public class 字节跳动9月9日组织优化 {
     private static int maxRow;
     private static int maxClo;
-    private static int d[][] = new int[][]{{0,-1},{1,0},{0,1},{-1,0}};//行数不变、列数减1......
+    private static int d[][] = new int[][]{{0,-1},{1,0},{0,1},{-1,0}};
     private static boolean[][] visited ;
 
-
-    private static int numIslands(int[][] grid){
+    private static int numOfTeams(int[][] grid){
         if (grid == null){
             return -1;
         }
-        maxClo = grid.length;//此处其实是row，定义名称出错
+        maxClo = grid.length;
         if (maxClo>0) {
             maxRow = grid[0].length;
         }
@@ -67,16 +43,17 @@ public class Number_Of_Islands_200 {
         return;
     }
 
-
-
-
-
     public static void main(String[] args) {
-        int arr[][]= new int[][]{{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,0,0,0}};
-        int arr2[][]= new int[][]{{1,1,0,0,0},{1,1,0,0,0},{0,0,1,0,0},{0,0,0,1,1}};
-        System.out.println(numIslands(arr));
-        System.out.println(numIslands(arr2));
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            int n = in.nextInt();
+            int[][] arr = new int[n][n];
+            for (int row = 0; row < n; row++) {
+                for (int clo = 0; clo < n; clo++) {
+                    arr[row][clo] = in.nextInt();
+                }
+            }
+            System.out.println(numOfTeams(arr));
+        }
     }
-
-
 }

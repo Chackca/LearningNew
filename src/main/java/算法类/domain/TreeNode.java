@@ -87,7 +87,6 @@ public class TreeNode<T> {
         //中序在这里（左中右）
         preOrder(node.right,SB);
         //后序在这里（左右中）
-
     }
     
     /**
@@ -138,7 +137,6 @@ public class TreeNode<T> {
                 cur = stack.pop().right;
             }
         }
-        
     }
 
     /**
@@ -220,8 +218,7 @@ public class TreeNode<T> {
             Command command = stack.pop();
             if (command.s.equals("print")){
                 list.add(command.node.val);
-            }else {
-                assert command.s.equals("go");
+            }else { //go
                 //这里是后序遍历
                 if (command.node.right!=null)
                     stack.push(new Command("go",command.node.right));
@@ -252,10 +249,10 @@ public class TreeNode<T> {
         root.right.left = new TreeNode<Integer>(6);
         root.right.right = new TreeNode<Integer>(7);
 
-        ZhiPrint(root);
-        /*System.out.println(root.toFrontString());
+        //ZhiPrint(root);
+        root.traverseReverse(root);
         //测试打印中序遍历
-        System.out.println(root.toMidString());
+        /*System.out.println(root.toMidString());
         //测试打印后序遍历
         System.out.println(root.toBackString());*/
     }
